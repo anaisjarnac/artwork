@@ -77,7 +77,7 @@ export const produits = [
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
   {
-    id: 11,
+    id: 12,
     nom: "FLOWER",
     prix: 200,
     image: "/images/choune.jpeg",

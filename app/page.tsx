@@ -6,15 +6,13 @@ export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center p-8">
       <div className="w-full max-w-[1300px] flex justify-center mb-8">
-        <Link href="/" aria-label="Retour à l’accueil">
-          <Image
-            src="/images/name.png"
-            alt="Anaïs"
-            width={400}
-            height={400}
-            className="h-auto w-auto max-w-xs"
-          />
-        </Link>
+        <Image
+          src="/images/name.png"
+          alt="Anaïs"
+          width={400}
+          height={400}
+          className="h-auto w-auto max-w-xs"
+        />
       </div>
 
       <div className="grid grid-cols-3 gap-12 max-w-[1300px] w-full">
