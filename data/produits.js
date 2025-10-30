@@ -45,7 +45,7 @@ export const produits = [
     id: 7,
     nom: "JUJUJUL",
     prix: 100,
-    image: "/images/jul.jpeg",
+    image: "/images/jujujul.jpeg",
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
   {
