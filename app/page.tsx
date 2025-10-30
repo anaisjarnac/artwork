@@ -1,18 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import LogoHover from "./components/LogoHover";
 import { produits } from "../data/produits";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center p-8">
       <div className="w-full max-w-[1300px] flex justify-center mb-8">
-        <Image
-          src="/images/name.png"
-          alt="Anaïs"
-          width={400}
-          height={400}
-          className="h-auto w-auto max-w-xs"
-        />
+        <LogoHover />
       </div>
 
       <div className="grid grid-cols-3 gap-12 max-w-[1300px] w-full">

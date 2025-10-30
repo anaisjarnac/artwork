@@ -19,7 +19,7 @@ export default async function ProduitPage({
         <Link
           href="/"
           aria-label="Retour à l'accueil"
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-0 pointer-events-auto"
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-0 pointer-events-auto hidden md:block"
         >
           <Image
             src="/images/arrow.png"
