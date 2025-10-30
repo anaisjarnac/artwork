@@ -19,8 +19,8 @@ export default function HomePage() {
           >
             <div className="relative w-full max-w-[720px] aspect-square mx-auto overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src={produit.image}
-                alt={produit.nom}
+                src={produit.images?.[0] ?? ""}
+                alt={`${produit.nom} - aperçu`}
                 fill
                 className="object-cover shake-target transform transition-transform duration-300 group-hover:scale-105"
                 priority
