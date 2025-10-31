@@ -53,13 +53,6 @@ export default async function ProduitPage({
       <div className="w-full max-w-[1300px] mt-6 px-4">
         <h1 className="text-4xl text-white font-bold">{produit.nom}</h1>
         <p className="text-white my-4 max-w-lg">{produit.description}</p>
-        <p className="text-2xl text-white font-semibold mb-6">
-          Print: {produit.prix_print} €
-        </p>
-        <p className="text-2xl text-white font-semibold mb-6">
-          Toile: {produit.prix} €
-        </p>
-
         <AcheterButton produit={produit} />
       </div>
     </main>

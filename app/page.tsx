@@ -33,7 +33,7 @@ export default function HomePage() {
                 {produit.nom}
               </h2>
               <p className="text-lg font-medium text-gray-700">
-                {produit.prix} €
+                A partir de {produit.prix_print_A4} €
               </p>
             </div>
           </Link>

@@ -2,8 +2,9 @@ export const produits = [
   {
     id: 1,
     nom: "KURT",
-    prix_print: 50,
-    prix: 300,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
+    prix: 200,
     images: [
       "/images/kurtprint.png",
       "/images/kurt.jpeg",
@@ -15,8 +16,9 @@ export const produits = [
   {
     id: 2,
     nom: "BOWIE",
-    prix_print: 50,
-    prix: 300,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
+    prix: 200,
     images: [
       "/images/bowieprint.png",
       "/images/david.jpeg",
@@ -27,7 +29,8 @@ export const produits = [
   {
     id: 3,
     nom: "JUL",
-    prix_print: 50,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     prix: 200,
     images: [
       "/images/julprint.png",
@@ -40,7 +43,8 @@ export const produits = [
   {
     id: 4,
     nom: "DALI",
-    prix_print: 50,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     prix: 200,
     images: [
       "/images/daliprint.png",
@@ -53,8 +57,9 @@ export const produits = [
   {
     id: 5,
     nom: "OLD SCHOOL",
-    prix_print: 50,
-    prix: 150,
+    prix: 100,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     images: ["/images/ricartprint.png", "/images/ricard.jpeg"],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
@@ -62,7 +67,8 @@ export const produits = [
     id: 6,
     nom: "X",
     prix: 200,
-    prix_print: 50,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     images: ["/images/soeur.png", "/images/soeur.jpeg", "/images/soeur1.jpeg"],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
@@ -70,7 +76,8 @@ export const produits = [
     id: 7,
     nom: "SCH",
     prix: 150,
-    prix_print: 50,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     images: ["/images/schprint.png", "/images/sch.jpeg", "/images/sch1.jpeg"],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
@@ -78,7 +85,8 @@ export const produits = [
     id: 8,
     nom: "JUJUJUL",
     prix: 100,
-    prix_print: 50,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     images: ["/images/jujuprint.png", "/images/jujujul.jpeg"],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
@@ -86,7 +94,8 @@ export const produits = [
     id: 9,
     nom: "PULP",
     prix: 200,
-    prix_print: 50,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     images: [
       "/images/pulpprint.png",
       "/images/pulp.jpeg",
@@ -98,7 +107,8 @@ export const produits = [
     id: 10,
     nom: "FLOYD",
     prix: 180,
-    prix_print: 50,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     images: [
       "/images/floydprint.png",
       "/images/pink.jpeg",
@@ -109,9 +119,11 @@ export const produits = [
   {
     id: 11,
     nom: "FAMILLE",
-    prix: 500,
-    prix_print: 50,
+    prix: "vendu",
+    prix_print_A4: "/",
+    prix_print_A3: 35,
     images: [
+      "/images/famille.png",
       "/images/famille.jpeg",
       "/images/famille1.jpeg",
       "/images/famille2.jpeg",
@@ -121,17 +133,22 @@ export const produits = [
   {
     id: 12,
     nom: "FRIDA",
-    prix: 180,
-    prix_print: 50,
-    images: ["/images/frida.jpeg", "/images/frida1.jpeg"],
+    prix: 200,
+    prix_print_A4: 200,
+    prix_print_A3: 35,
+    images: [
+      "/images/fridaprint.png",
+      "/images/frida.jpeg",
+      "/images/frida1.jpeg",
+    ],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
   {
     id: 13,
     nom: "FLOWER",
     prix: 200,
-    prix_print: 50,
-    images: ["/images/choune.jpeg"],
+    prix_print_A4: 200,
+    images: ["/images/chouneprint.png", "/images/choune.jpeg"],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
 ];
