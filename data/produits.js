@@ -84,7 +84,7 @@ export const produits = [
   {
     id: 8,
     nom: "JUJUJUL",
-    prix: 100,
+    prix: "vendu",
     prix_print_A4: 20,
     prix_print_A3: 35,
     images: ["/images/jujuprint.png", "/images/jujujul.jpeg"],
@@ -120,8 +120,6 @@ export const produits = [
     id: 11,
     nom: "FAMILLE",
     prix: "vendu",
-    prix_print_A4: "/",
-    prix_print_A3: 35,
     images: [
       "/images/famille.png",
       "/images/famille.jpeg",
@@ -134,7 +132,7 @@ export const produits = [
     id: 12,
     nom: "FRIDA",
     prix: 200,
-    prix_print_A4: 200,
+    prix_print_A4: 20,
     prix_print_A3: 35,
     images: [
       "/images/fridaprint.png",
@@ -146,8 +144,9 @@ export const produits = [
   {
     id: 13,
     nom: "FLOWER",
-    prix: 200,
-    prix_print_A4: 200,
+    prix: 300,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
     images: ["/images/chouneprint.png", "/images/choune.jpeg"],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },

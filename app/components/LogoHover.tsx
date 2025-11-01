@@ -20,7 +20,7 @@ export default function LogoHover() {
     >
       <Link href="/" aria-label="Retour à l'accueil">
         <Image
-          src="/images/name.png"
+          src="/images/anais5.png"
           alt="Anaïs"
           width={400}
           height={400}

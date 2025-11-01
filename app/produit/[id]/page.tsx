@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AcheterButton from "./AcheterButton";
 import GalleryClient from "../../components/GalleryClient";
+import AddToCartButton from "../../components/AddToCartButton";
 
 export default async function ProduitPage({
   params,
@@ -54,6 +55,7 @@ export default async function ProduitPage({
         <h1 className="text-4xl text-white font-bold">{produit.nom}</h1>
         <p className="text-white my-4 max-w-lg">{produit.description}</p>
         <AcheterButton produit={produit} />
+        <AddToCartButton produit={produit} />
       </div>
     </main>
   );
