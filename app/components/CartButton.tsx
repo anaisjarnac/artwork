@@ -1,9 +1,17 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "./CartProvider";
 
 export default function CartButton() {
   const { count, toggle } = useCart();
+  const [mounted, setMounted] = useState(false);
+
+  // ✅ Indique quand le composant est monté côté client
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
   return (
     <button
       onClick={toggle}
@@ -24,7 +32,8 @@ export default function CartButton() {
           d="M3 3h2l.4 2M7 13h10l4-8H5.4"
         />
       </svg>
-      <span className="ml-2 text-sm font-medium">{count}</span>
+      {/* ✅ On affiche 0 côté serveur, et la vraie valeur côté client */}
+      <span className="ml-2 text-sm font-medium">{mounted ? count : 0}</span>
     </button>
   );
 }

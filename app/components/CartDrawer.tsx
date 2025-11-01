@@ -52,9 +52,9 @@ export default function CartDrawer() {
         {items.length === 0 && (
           <div className="text-gray-500">Votre panier est vide.</div>
         )}
-        {items.map((it) => (
+        {items.map((it, index) => (
           <div
-            key={String(it.id)}
+            key={`${it.id}-${it.nom}-${index}`}
             className="flex items-center justify-between"
           >
             <div>
@@ -63,20 +63,22 @@ export default function CartDrawer() {
             </div>
             <div className="flex items-center gap-2">
               <button
-                onClick={() => updateQty(it.id, Math.max(1, it.qty - 1))}
+                onClick={() =>
+                  updateQty(it.id, it.nom, Math.max(1, it.qty - 1))
+                }
                 className="px-2 bg-gray-200 rounded"
               >
                 -
               </button>
               <div>{it.qty}</div>
               <button
-                onClick={() => updateQty(it.id, it.qty + 1)}
+                onClick={() => updateQty(it.id, it.nom, it.qty + 1)}
                 className="px-2 bg-gray-200 rounded"
               >
                 +
               </button>
               <button
-                onClick={() => removeItem(it.id)}
+                onClick={() => removeItem(it.id, it.nom)}
                 className="ml-2 text-red-500"
               >
                 ×

@@ -1,6 +1,7 @@
 "use client";
 import React, {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -10,17 +11,22 @@ import React, {
 type CartItem = {
   id: string | number;
   nom: string;
-  prix: number;
+  prix: number; // en euros (number)
   qty: number;
 };
 
-type AddItemPayload = Omit<CartItem, "qty"> & { qty?: number };
+type AddItemPayload = {
+  id: string | number;
+  nom: string;
+  prix: number | string;
+  qty?: number;
+};
 
-type CartContextType = {
+type CartContextValue = {
   items: CartItem[];
-  addItem: (item: AddItemPayload) => void;
-  removeItem: (id: string | number) => void;
-  updateQty: (id: string | number, qty: number) => void;
+  addItem: (p: AddItemPayload) => void;
+  removeItem: (id: string | number, nom: string) => void;
+  updateQty: (id: string | number, nom: string, qty: number) => void;
   clear: () => void;
   count: number;
   total: number;
@@ -30,86 +36,131 @@ type CartContextType = {
   toggle: () => void;
 };
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+const CartContext = createContext<CartContextValue | undefined>(undefined);
 
-export function useCart() {
-  const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used within CartProvider");
-  return ctx;
-}
-
-export default function CartProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>(() => {
     try {
-      if (typeof window === "undefined") return [];
-      const raw = localStorage.getItem("cart_items");
-      return raw ? JSON.parse(raw) : [];
+      const raw =
+        typeof window !== "undefined" ? localStorage.getItem("cart") : null;
+      return raw ? (JSON.parse(raw) as CartItem[]) : [];
     } catch {
-      // ignore and return empty
       return [];
     }
   });
-
   const [isOpen, setIsOpen] = useState(false);
 
+  // persist
   useEffect(() => {
     try {
-      if (typeof window === "undefined") return;
-      localStorage.setItem("cart_items", JSON.stringify(items));
-    } catch {
-      // ignore
-    }
+      localStorage.setItem("cart", JSON.stringify(items));
+    } catch {}
   }, [items]);
 
-  const addItem = (item: AddItemPayload) => {
-    setItems((prev) => {
-      const found = prev.find((p) => p.id === item.id);
-      if (found) {
-        return prev.map((p) =>
-          p.id === item.id ? { ...p, qty: p.qty + (item.qty ?? 1) } : p
-        );
-      }
-      return [
-        ...prev,
-        { ...(item as Omit<CartItem, "qty">), qty: item.qty ?? 1 } as CartItem,
-      ];
-    });
-    setIsOpen(true);
+  const normalizePrix = (p: number | string) => {
+    if (typeof p === "number" && Number.isFinite(p)) return p;
+    if (typeof p === "string") {
+      const n = parseFloat(p.replace(",", "."));
+      return Number.isFinite(n) ? n : 0;
+    }
+    return 0;
   };
 
-  const removeItem = (id: string | number) =>
-    setItems((prev) => prev.filter((p) => p.id !== id));
-  const updateQty = (id: string | number, qty: number) =>
-    setItems((prev) => prev.map((p) => (p.id === id ? { ...p, qty } : p)));
-  const clear = () => setItems([]);
+  const addItem = useCallback((payload: AddItemPayload) => {
+    const payloadPrix = normalizePrix(payload.prix);
+    const qtyToAdd =
+      payload.qty && payload.qty > 0 ? Math.floor(payload.qty) : 1;
 
-  const count = useMemo(() => items.reduce((s, i) => s + i.qty, 0), [items]);
+    setItems((prev) => {
+      // Match by BOTH id AND nom to distinguish format variants (e.g., "KURT — A4" vs "KURT — toile")
+      const idx = prev.findIndex(
+        (i) => i.id === payload.id && i.nom === payload.nom
+      );
+      if (idx >= 0) {
+        // increment qty
+        const next = [...prev];
+        next[idx] = { ...next[idx], qty: next[idx].qty + qtyToAdd };
+        return next;
+      }
+      // push new item
+      return [
+        ...prev,
+        {
+          id: payload.id,
+          nom: payload.nom,
+          prix: payloadPrix,
+          qty: qtyToAdd,
+        },
+      ];
+    });
+
+    setIsOpen(true);
+  }, []);
+
+  const removeItem = useCallback((id: string | number, nom: string) => {
+    setItems((prev) => prev.filter((i) => !(i.id === id && i.nom === nom)));
+  }, []);
+
+  const updateQty = useCallback(
+    (id: string | number, nom: string, qty: number) => {
+      const q = Math.max(0, Math.floor(qty));
+      setItems((prev) => {
+        if (q === 0) return prev.filter((i) => !(i.id === id && i.nom === nom));
+        return prev.map((i) =>
+          i.id === id && i.nom === nom ? { ...i, qty: q } : i
+        );
+      });
+    },
+    []
+  );
+
+  const clear = useCallback(() => setItems([]), []);
+
+  const count = useMemo(() => items.reduce((s, it) => s + it.qty, 0), [items]);
+
   const total = useMemo(
-    () => items.reduce((s, i) => s + i.qty * i.prix, 0),
+    () => items.reduce((s, it) => s + Number(it.prix) * it.qty, 0),
     [items]
   );
 
-  const open = () => setIsOpen(true);
-  const close = () => setIsOpen(false);
-  const toggle = () => setIsOpen((v) => !v);
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
+  const toggle = useCallback(() => setIsOpen((v) => !v), []);
 
-  const value: CartContextType = {
-    items,
-    addItem,
-    removeItem,
-    updateQty,
-    clear,
-    count,
-    total,
-    isOpen,
-    open,
-    close,
-    toggle,
-  };
+  const value = useMemo(
+    () => ({
+      items,
+      addItem,
+      removeItem,
+      updateQty,
+      clear,
+      count,
+      total,
+      isOpen,
+      open,
+      close,
+      toggle,
+    }),
+    [
+      items,
+      addItem,
+      removeItem,
+      updateQty,
+      clear,
+      count,
+      total,
+      isOpen,
+      open,
+      close,
+      toggle,
+    ]
+  );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+}
+
+export function useCart(): CartContextValue {
+  const ctx = useContext(CartContext);
+  if (!ctx) throw new Error("useCart must be used within CartProvider");
+  return ctx;
 }

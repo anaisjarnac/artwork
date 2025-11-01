@@ -3,7 +3,7 @@
 import "./globals.css";
 import HeartCursor from "./components/HeartCursor";
 import { useEffect } from "react";
-import CartProvider from "./components/CartProvider";
+import { CartProvider } from "./components/CartProvider";
 import CartButton from "./components/CartButton";
 import CartDrawer from "./components/CartDrawer";
 

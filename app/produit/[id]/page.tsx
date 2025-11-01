@@ -4,6 +4,7 @@ import Link from "next/link";
 import AcheterButton from "./AcheterButton";
 import GalleryClient from "../../components/GalleryClient";
 import AddToCartButton from "../../components/AddToCartButton";
+import type { Product } from "../../../types/Product";
 
 export default async function ProduitPage({
   params,
@@ -11,9 +12,13 @@ export default async function ProduitPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const produit = produits.find((p) => p.id === Number(id));
+  const produit = produits.find((p) => p.id === Number(id)) as
+    | Product
+    | undefined;
 
   if (!produit) return <div>Produit introuvable</div>;
+
+  const isSold = typeof produit.prix !== "number";
 
   return (
     <main className="min-h-screen bg-[#4b5ae4] p-8 flex flex-col items-center">
@@ -54,8 +59,15 @@ export default async function ProduitPage({
       <div className="w-full max-w-[1300px] mt-6 px-4">
         <h1 className="text-4xl text-white font-bold">{produit.nom}</h1>
         <p className="text-white my-4 max-w-lg">{produit.description}</p>
-        <AcheterButton produit={produit} />
-        <AddToCartButton produit={produit} />
+
+        {isSold ? (
+          <p className="text-xl text-red-400 font-semibold">Vendu 🖤</p>
+        ) : (
+          <>
+            <AcheterButton produit={produit} />
+            <AddToCartButton produit={{ ...produit, prix: produit.prix! }} />
+          </>
+        )}
       </div>
     </main>
   );

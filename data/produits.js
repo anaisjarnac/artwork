@@ -84,7 +84,6 @@ export const produits = [
   {
     id: 8,
     nom: "JUJUJUL",
-    prix: "vendu",
     prix_print_A4: 20,
     prix_print_A3: 35,
     images: ["/images/jujuprint.png", "/images/jujujul.jpeg"],
@@ -119,7 +118,6 @@ export const produits = [
   {
     id: 11,
     nom: "FAMILLE",
-    prix: "vendu",
     images: [
       "/images/famille.png",
       "/images/famille.jpeg",
