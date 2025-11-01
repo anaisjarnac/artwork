@@ -64,7 +64,7 @@ export default async function ProduitPage({
           <p className="text-xl text-red-400 font-semibold">Vendu 🖤</p>
         ) : (
           <>
-            <AcheterButton produit={produit} />
+            {/* <AcheterButton produit={produit} /> */}
             <AddToCartButton produit={{ ...produit, prix: produit.prix! }} />
           </>
         )}
