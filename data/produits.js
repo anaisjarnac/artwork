@@ -20,7 +20,7 @@ export const produits = [
     prix_print_A3: 35,
     prix: 200,
     images: [
-      "/images/bowieprint.png",
+      "/images/bowieprintfinallogoweb.png",
       "/images/david.jpeg",
       "/images/david1.jpeg",
     ],
@@ -33,7 +33,7 @@ export const produits = [
     prix_print_A3: 35,
     prix: 200,
     images: [
-      "/images/julprint.png",
+      "/images/julprintweb.png",
       "/images/jul.jpeg",
       "/images/jul1.jpeg",
       "/images/jul2.jpeg",
@@ -47,7 +47,7 @@ export const produits = [
     prix_print_A3: 35,
     prix: 200,
     images: [
-      "/images/daliprint.png",
+      "/images/dali_print_web.png",
       "/images/dali.jpeg",
       "/images/dali1.jpeg",
       "/images/dali2.jpeg",
@@ -145,7 +145,7 @@ export const produits = [
     prix: 300,
     prix_print_A4: 20,
     prix_print_A3: 35,
-    images: ["/images/chouneprint.png", "/images/choune.jpeg"],
+    images: ["/images/chouneprintlogoprint.png", "/images/choune.jpeg"],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
 ];

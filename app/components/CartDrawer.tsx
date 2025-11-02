@@ -35,14 +35,20 @@ export default function CartDrawer() {
   };
 
   return (
-    <div className="fixed right-4 top-16 z-50 w-80 max-w-full bg-white shadow-lg rounded p-4">
+    <div className="fixed right-4 top-4 z-50 w-80 max-w-full bg-white/95 backdrop-blur-sm shadow-lg rounded-lg p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-bold">Panier</h3>
+        <h3 className="font-bold text-gray-900">Panier</h3>
         <div className="flex items-center gap-2">
-          <button onClick={clear} className="text-sm text-gray-500">
+          <button
+            onClick={clear}
+            className="text-sm text-gray-500 hover:text-gray-700"
+          >
             Vider
           </button>
-          <button onClick={close} className="text-sm text-gray-700">
+          <button
+            onClick={close}
+            className="text-sm text-gray-700 hover:text-gray-900"
+          >
             Fermer
           </button>
         </div>
