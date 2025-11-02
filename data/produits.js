@@ -69,7 +69,11 @@ export const produits = [
     prix: 200,
     prix_print_A4: 20,
     prix_print_A3: 35,
-    images: ["/images/soeur.png", "/images/soeur.jpeg", "/images/soeur1.jpeg"],
+    images: [
+      "/images/soeurprint.png",
+      "/images/soeur.jpeg",
+      "/images/soeur1.jpeg",
+    ],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
   {
@@ -78,7 +82,11 @@ export const produits = [
     prix: 150,
     prix_print_A4: 20,
     prix_print_A3: 35,
-    images: ["/images/schprint.png", "/images/sch.jpeg", "/images/sch1.jpeg"],
+    images: [
+      "/images/schprintweb.png",
+      "/images/sch.jpeg",
+      "/images/sch1.jpeg",
+    ],
     description: "Huile sur toile 80x100 cm, signé AJ.",
   },
   {
