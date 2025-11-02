@@ -7,12 +7,19 @@ import ProductsGrid from "./components/ProductsGrid";
 export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center p-8">
-      <div className="w-full max-w-[1300px] flex items-center justify-center mb-8 relative">
-        <div className="absolute left-0"></div>
-        <LogoHover />
-        <div className="absolute right-0 flex items-center gap-4">
-          <SearchButton produits={produits} />
+      <div className="w-full max-w-[1300px] flex flex-col md:flex-row items-center justify-center mb-8 gap-4">
+        {/* Mobile: cart button on top right, Logo below */}
+        <div className="flex items-center md:hidden w-full justify-end">
           <CartButton />
+        </div>
+
+        {/* Desktop: Logo centered with buttons on right */}
+        <div className="w-full md:relative flex items-center justify-center">
+          <LogoHover />
+          <div className="hidden md:flex md:absolute right-0 items-center gap-4">
+            <SearchButton produits={produits} />
+            <CartButton />
+          </div>
         </div>
       </div>
 

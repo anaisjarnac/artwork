@@ -27,7 +27,7 @@ export default function SearchButton({ produits }: { produits: any[] }) {
   }, [produits, query]);
 
   return (
-    <div ref={ref} className="relative ml-4">
+    <div ref={ref} className="relative ml-4 hidden md:block">
       <button
         type="button"
         aria-label="Ouvrir la recherche"
@@ -59,7 +59,7 @@ export default function SearchButton({ produits }: { produits: any[] }) {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg z-50 p-3">
+        <div className="absolute right-0 mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-lg z-50 p-3">
           <input
             autoFocus
             value={query}

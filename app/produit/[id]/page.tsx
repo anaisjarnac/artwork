@@ -1,7 +1,6 @@
 import { produits } from "../../../data/produits";
 import Image from "next/image";
 import Link from "next/link";
-import AcheterButton from "./AcheterButton";
 import GalleryClient from "../../components/GalleryClient";
 import AddToCartButton from "../../components/AddToCartButton";
 import type { Product } from "../../../types/Product";
@@ -18,7 +17,10 @@ export default async function ProduitPage({
 
   if (!produit) return <div>Produit introuvable</div>;
 
-  const isSold = typeof produit.prix !== "number";
+  const isSoldToile = typeof produit.prix !== "number";
+  const hasA4 = typeof produit.prix_print_A4 === "number";
+  const hasA3 = typeof produit.prix_print_A3 === "number";
+  const isSold = isSoldToile && !hasA4 && !hasA3;
 
   return (
     <main className="min-h-screen bg-[#4b5ae4] p-8 flex flex-col items-center">

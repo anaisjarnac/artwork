@@ -19,7 +19,7 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
       {filtered.length === 0 ? (
         <div className="text-center text-gray-600">Aucun résultat</div>
       ) : (
-        <div className="grid grid-cols-3 gap-12 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 w-full">
           {filtered.map((produit) => (
             <Link
               key={produit.id}
@@ -41,7 +41,7 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
                   {produit.nom}
                 </h2>
                 <p className="text-lg font-medium text-gray-700">
-                  {produit.prix} €
+                  À partir de {produit.prix_print_A4} €
                 </p>
               </div>
             </Link>
