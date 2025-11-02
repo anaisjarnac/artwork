@@ -143,7 +143,11 @@ export const produits: Product[] = [
     prix: 200,
     prix_print_A4: 20,
     prix_print_A3: 35,
-    images: ["/images/frida.jpeg", "/images/frida1.jpeg"],
+    images: [
+      "/images/fridaprint.png",
+      "/images/frida.jpeg",
+      "/images/frida1.jpeg",
+    ],
     description: "Prints ou Acrylique sur toile",
   },
   {
