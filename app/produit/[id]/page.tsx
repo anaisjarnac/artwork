@@ -51,7 +51,7 @@ export default async function ProduitPage({
               alt="Anaïs"
               width={700}
               height={700}
-              className="h-auto w-auto"
+              className="w-[150px] h-[150px] md:w-[700px] md:h-[700px] object-contain"
             />
           </Link>
         </div>

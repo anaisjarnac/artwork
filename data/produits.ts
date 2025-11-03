@@ -11,6 +11,7 @@ export const produits: Product[] = [
     prix: 250,
     images: [
       "/images/png/kurt.png",
+
       "/images/cadre/kurtcadre.png",
       "/images/kurt.jpeg",
       "/images/kurt1.jpeg",
@@ -58,11 +59,10 @@ export const produits: Product[] = [
 
     prix: 250,
     images: [
-      "/images/png/A3dali.png",
+      "/images/jpeg/A3daliFINAL.jpg",
       "/images/cadre/dalicadre.png",
       "/images/dali.jpeg",
       "/images/dali1.jpeg",
-      "/images/dali2.jpeg",
     ],
     description: "Prints ou Acrylique sur toile",
   },
