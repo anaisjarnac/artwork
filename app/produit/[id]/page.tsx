@@ -20,7 +20,8 @@ export default async function ProduitPage({
   const isSoldToile = typeof produit.prix !== "number";
   const hasA4 = typeof produit.prix_print_A4 === "number";
   const hasA3 = typeof produit.prix_print_A3 === "number";
-  const isSold = isSoldToile && !hasA4 && !hasA3;
+  const hasCarte = typeof produit.prix_carte === "number";
+  const isSold = isSoldToile && !hasA4 && !hasA3 && !hasCarte;
 
   return (
     <main className="min-h-screen bg-[#4b5ae4] p-8 flex flex-col items-center">

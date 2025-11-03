@@ -22,6 +22,9 @@ export default function AcheterButton({ produit }: { produit: any }) {
       case "toile":
         setPrix(produit.prix);
         break;
+      case "carte":
+        setPrix(produit.prix_carte);
+        break;
       default:
         setPrix(null);
     }
@@ -72,6 +75,7 @@ export default function AcheterButton({ produit }: { produit: any }) {
         <option value="A4">Print A4 — {produit.prix_print_A4} €</option>
         <option value="A3">Print A3 — {produit.prix_print_A3} €</option>
         <option value="toile">Toile — {produit.prix} €</option>
+        <option value="carte">Carte — {produit.prix_carte} €</option>
       </select>
 
       <button

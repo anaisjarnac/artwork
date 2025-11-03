@@ -8,11 +8,14 @@ type Product = {
   prix?: number | string;
   prix_print_A4?: number | string;
   prix_print_A3?: number | string;
+  prix_carte?: number | string;
 };
 
 export default function AddToCartButton({ produit }: { produit: Product }) {
   const { addItem } = useCart();
-  const [format, setFormat] = useState<"A4" | "A3" | "toile" | "">("");
+  const [format, setFormat] = useState<"A4" | "A3" | "toile" | "carte" | "">(
+    ""
+  );
 
   const parsePrice = (p?: number | string): number | null => {
     if (typeof p === "number" && Number.isFinite(p)) return p;
@@ -27,6 +30,7 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
     if (format === "A4") return parsePrice(produit.prix_print_A4);
     if (format === "A3") return parsePrice(produit.prix_print_A3);
     if (format === "toile") return parsePrice(produit.prix);
+    if (format === "carte") return parsePrice(produit.prix_carte);
     // fallback: prefer print A4/A3 if available, else toile
     return (
       parsePrice(produit.prix_print_A4) ??
@@ -68,6 +72,11 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
         )}
         {parsePrice(produit.prix) != null && (
           <option value="toile">Toile — {parsePrice(produit.prix)}€</option>
+        )}
+        {parsePrice(produit.prix_carte) != null && (
+          <option value="carte">
+            Carte — {parsePrice(produit.prix_carte)}€
+          </option>
         )}
       </select>
 
