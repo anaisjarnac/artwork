@@ -5,7 +5,7 @@ import Link from "next/link";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ProductsGrid({ produits }: { produits: any[] }) {
-  const [query, _setQuery] = useState("");
+  const [query] = useState("");
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -26,12 +26,13 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
               href={`/produit/${produit.id}`}
               className="group flex flex-col items-center text-center w-full no-underline text-inherit"
             >
-              <div className="relative w-full max-w-[520px] aspect-square mx-auto overflow-hidden rounded-2xl shadow-lg">
+              <div className="relative w-full max-w-[520px] mx-auto overflow-hidden rounded-2xl shadow-lg">
                 <Image
                   src={produit.images?.[0] ?? ""}
                   alt={produit.nom}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  width={520}
+                  height={520}
+                  className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   priority
                 />
               </div>

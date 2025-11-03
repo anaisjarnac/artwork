@@ -10,7 +10,8 @@ export const produits: Product[] = [
 
     prix: 250,
     images: [
-      "/images/kurtprintweb.png",
+      "/images/png/kurt.png",
+      "/images/cadre/kurtcadre.png",
       "/images/kurt.jpeg",
       "/images/kurt1.jpeg",
       "/images/kurt2.jpeg",
@@ -23,10 +24,10 @@ export const produits: Product[] = [
     prix_print_A4: 20,
     prix_print_A3: 35,
     prix_carte: 5,
-
     prix: 250,
     images: [
-      "/images/bowieprintfinallogoweb.png",
+      "/images/png/A3bowie.png",
+      "/images/cadre/bowiecadre.png",
       "/images/david.jpeg",
       "/images/david1.jpeg",
     ],
@@ -38,10 +39,10 @@ export const produits: Product[] = [
     prix_print_A4: 20,
     prix_print_A3: 35,
     prix_carte: 5,
-
     prix: 200,
     images: [
-      "/images/julprintweb.png",
+      "/images/png/jul.png",
+      "/images/cadre/julcadre.png",
       "/images/jul.jpeg",
       "/images/jul1.jpeg",
       "/images/jul2.jpeg",
@@ -57,7 +58,8 @@ export const produits: Product[] = [
 
     prix: 250,
     images: [
-      "/images/dali_print_web.png",
+      "/images/png/A3dali.png",
+      "/images/cadre/dalicadre.png",
       "/images/dali.jpeg",
       "/images/dali1.jpeg",
       "/images/dali2.jpeg",
@@ -72,7 +74,11 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
 
-    images: ["/images/ricartprint.png", "/images/ricard.jpeg"],
+    images: [
+      "/images/png/serpent.png",
+      "/images/cadre/serpentcadre.png",
+      "/images/ricard.jpeg",
+    ],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -82,7 +88,8 @@ export const produits: Product[] = [
     prix_print_A4: 20,
     prix_print_A3: 35,
     images: [
-      "/images/soeurprint.png",
+      "/images/png/x.png",
+      "/images/cadre/xcadre.png",
       "/images/soeur.jpeg",
       "/images/soeur1.jpeg",
     ],
@@ -96,7 +103,8 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/schprintweb.png",
+      "/images/png/A3sch.png",
+      "/images/cadre/schcadre.png",
       "/images/sch.jpeg",
       "/images/sch1.jpeg",
     ],
@@ -108,7 +116,11 @@ export const produits: Product[] = [
     prix_print_A4: 20,
     prix_carte: 5,
     prix_print_A3: 35,
-    images: ["/images/jujuprintweb.png", "/images/jujujul.jpeg"],
+    images: [
+      "/images/png/jujulA3.png",
+      "/images/cadre/jujucadre.png",
+      "/images/jujujul.jpeg",
+    ],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -119,7 +131,8 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/pulpprint.png",
+      "/images/png/A3pulpnoir.png",
+      "/images/cadre/pulpcadre.png",
       "/images/pulp.jpeg",
       "/images/pulp1.jpeg",
     ],
@@ -133,7 +146,8 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/floydprint.png",
+      "/images/png/FLOYDA3.png",
+      "/images/cadre/pinkcadre.png",
       "/images/pink.jpeg",
       "/images/pink1.jpeg",
     ],
@@ -141,6 +155,42 @@ export const produits: Product[] = [
   },
   {
     id: 11,
+    nom: "MADAME",
+    prix: 200,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
+    prix_carte: 5,
+    images: [
+      "/images/png/A3frida.png",
+      "/images/cadre/madamecadre.png",
+      "/images/frida.jpeg",
+      "/images/frida1.jpeg",
+    ],
+    description: "Prints ou Acrylique sur toile",
+  },
+  {
+    id: 12,
+    nom: "FLOWER",
+    images: [
+      "/images/png/A3choune.png",
+      "/images/cadre/chounecadre.png",
+      "/images/choune.jpeg",
+    ],
+    prix: 300,
+    prix_print_A4: 20,
+    prix_print_A3: 35,
+    prix_carte: 5,
+    description: "Prints ou Acrylique sur toile",
+  },
+  {
+    id: 13,
+    nom: "CARTES",
+    images: ["/images/cartes.png"],
+    prix_carte: 20,
+    description: "Lot de 4 cartes postales 10x15cm",
+  },
+  {
+    id: 14,
     nom: "PICNIC",
     prix_print_A4: 20,
     prix_print_A3: 35,
@@ -151,36 +201,5 @@ export const produits: Product[] = [
       "/images/famille2.jpeg",
     ],
     description: "Prints ou Acrylique sur toile",
-  },
-  {
-    id: 12,
-    nom: "MADAME",
-    prix: 200,
-    prix_print_A4: 20,
-    prix_print_A3: 35,
-    prix_carte: 5,
-    images: [
-      "/images/fridaprint.png",
-      "/images/frida.jpeg",
-      "/images/frida1.jpeg",
-    ],
-    description: "Prints ou Acrylique sur toile",
-  },
-  {
-    id: 13,
-    nom: "FLOWER",
-    images: ["/images/chouneprintlogoprint.png", "/images/choune.jpeg"],
-    prix: 300,
-    prix_print_A4: 20,
-    prix_print_A3: 35,
-    prix_carte: 5,
-    description: "Prints ou Acrylique sur toile",
-  },
-  {
-    id: 14,
-    nom: "CARTES",
-    images: ["/images/cartes.png"],
-    prix_carte: 20,
-    description: "Lot de 4 cartes postales 10x15cm",
   },
 ];
