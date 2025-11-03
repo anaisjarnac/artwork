@@ -5,6 +5,7 @@ import HeartCursor from "./components/HeartCursor";
 import { useEffect } from "react";
 import { CartProvider } from "./components/CartProvider";
 import CartDrawer from "./components/CartDrawer";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({
   children,
@@ -26,6 +27,7 @@ export default function RootLayout({
         <CartProvider>
           <CartDrawer />
           {children}
+          <Analytics />
         </CartProvider>
       </body>
     </html>
