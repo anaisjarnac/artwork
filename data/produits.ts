@@ -27,7 +27,7 @@ export const produits: Product[] = [
     prix_carte: 5,
     prix: 250,
     images: [
-      "/images/png/A3bowie.png",
+      "/images/jpeg/A3.jpg",
       "/images/cadre/bowiecadre.png",
       "/images/david.jpeg",
       "/images/david1.jpeg",
