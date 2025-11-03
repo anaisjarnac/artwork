@@ -24,7 +24,7 @@ export default function LogoHover() {
           alt="Anaïs"
           width={400}
           height={400}
-          className="h-auto w-auto max-w-xs"
+          className="h-auto w-auto max-w-[150px] md:max-w-xs"
         />
       </Link>
 

@@ -10,8 +10,7 @@ export const produits: Product[] = [
 
     prix: 250,
     images: [
-      "/images/png/kurt.png",
-
+      "/images/jpeg/kurt.jpg",
       "/images/cadre/kurtcadre.png",
       "/images/kurt.jpeg",
       "/images/kurt1.jpeg",
@@ -42,7 +41,7 @@ export const produits: Product[] = [
     prix_carte: 5,
     prix: 200,
     images: [
-      "/images/png/jul.png",
+      "/images/jpeg/jul.jpg",
       "/images/cadre/julcadre.png",
       "/images/jul.jpeg",
       "/images/jul1.jpeg",
@@ -75,7 +74,7 @@ export const produits: Product[] = [
     prix_carte: 5,
 
     images: [
-      "/images/png/serpent.png",
+      "/images/jpeg/serpent.jpg",
       "/images/cadre/serpentcadre.png",
       "/images/ricard.jpeg",
     ],
@@ -88,7 +87,7 @@ export const produits: Product[] = [
     prix_print_A4: 20,
     prix_print_A3: 35,
     images: [
-      "/images/png/x.png",
+      "/images/jpeg/x.jpg",
       "/images/cadre/xcadre.png",
       "/images/soeur.jpeg",
       "/images/soeur1.jpeg",
@@ -103,7 +102,7 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/png/A3sch.png",
+      "/images/jpeg/A3sch.jpg",
       "/images/cadre/schcadre.png",
       "/images/sch.jpeg",
       "/images/sch1.jpeg",
@@ -117,7 +116,7 @@ export const produits: Product[] = [
     prix_carte: 5,
     prix_print_A3: 35,
     images: [
-      "/images/png/jujulA3.png",
+      "/images/jpeg/jujulA3.jpg",
       "/images/cadre/jujucadre.png",
       "/images/jujujul.jpeg",
     ],
@@ -131,7 +130,7 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/png/A3pulpnoir.png",
+      "/images/jpeg/A3pulpnoir.jpg",
       "/images/cadre/pulpcadre.png",
       "/images/pulp.jpeg",
       "/images/pulp1.jpeg",
@@ -146,7 +145,7 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/png/FLOYDA3.png",
+      "/images/jpeg/FLOYDA3.jpg",
       "/images/cadre/pinkcadre.png",
       "/images/pink.jpeg",
       "/images/pink1.jpeg",
@@ -161,7 +160,7 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/png/A3frida.png",
+      "/images/jpeg/A3frida.jpg",
       "/images/cadre/madamecadre.png",
       "/images/frida.jpeg",
       "/images/frida1.jpeg",
@@ -172,7 +171,7 @@ export const produits: Product[] = [
     id: 12,
     nom: "FLOWER",
     images: [
-      "/images/png/A3choune.png",
+      "/images/jpeg/A3chounenoir.jpg",
       "/images/cadre/chounecadre.png",
       "/images/choune.jpeg",
     ],
@@ -196,7 +195,7 @@ export const produits: Product[] = [
     prix_print_A3: 35,
     prix_carte: 5,
     images: [
-      "/images/542cb50e-5137-4eac-94e5-ec3f4a48c86b.png",
+      "/images/jpeg/542cb50e-5137-4eac-94e5-ec3f4a48c86b.jpg",
       "/images/famille1.jpeg",
       "/images/famille2.jpeg",
     ],

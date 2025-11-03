@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GalleryClient from "../../components/GalleryClient";
 import AddToCartButton from "../../components/AddToCartButton";
+import CartButton from "../../components/CartButton";
 import type { Product } from "../../../types/Product";
 
 export default async function ProduitPage({
@@ -26,6 +27,11 @@ export default async function ProduitPage({
   return (
     <main className="min-h-screen bg-[#4b5ae4] p-8 flex flex-col items-center">
       <div className="w-full max-w-[1300px] relative mb-6 pointer-events-none">
+        {/* Mobile: cart button on top right */}
+        <div className="flex items-center md:hidden w-full justify-end mb-4">
+          <CartButton />
+        </div>
+
         <Link
           href="/"
           aria-label="Retour à l'accueil"
@@ -40,6 +46,11 @@ export default async function ProduitPage({
           />
         </Link>
 
+        {/* Desktop: Cart button on top right */}
+        <div className="hidden md:flex md:absolute right-0 top-1/2 transform -translate-y-1/2 z-0 pointer-events-auto">
+          <CartButton />
+        </div>
+
         <div className="flex justify-center">
           <Link
             href="/"
@@ -51,7 +62,7 @@ export default async function ProduitPage({
               alt="Anaïs"
               width={700}
               height={700}
-              className="w-[150px] h-[150px] md:w-[700px] md:h-[700px] object-contain"
+              className="w-[100px] h-[100px] md:w-[300px] md:h-[300px] object-contain"
             />
           </Link>
         </div>
