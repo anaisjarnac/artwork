@@ -59,7 +59,7 @@ export default function GalleryClient({
       {/* Images à gauche sur desktop */}
       <div className="md:w-1/2 flex flex-col md:flex-row items-center md:items-start gap-4 order-1 md:order-1">
         {/* Image principale */}
-        <div className="w-full md:flex-1 max-w-[200px] md:max-w-[400px] order-2 md:order-1">
+        <div className="w-full md:flex-1 max-w-[320px] md:max-w-[400px] order-2 md:order-1">
           {currentImages.length > 0 && (
             <Image
               src={currentImages[safeIndex] || currentImages[0] || images[0]}
