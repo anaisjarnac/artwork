@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useCart } from "./CartProvider";
+import JSConfetti from "js-confetti";
 
 type Product = {
   id: number;
@@ -16,6 +17,11 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
   const [format, setFormat] = useState<"A4" | "A3" | "toile" | "carte" | "">(
     ""
   );
+  const jsConfettiRef = useRef<JSConfetti | null>(null);
+
+  useEffect(() => {
+    jsConfettiRef.current = new JSConfetti();
+  }, []);
 
   const parsePrice = (p?: number | string): number | null => {
     if (typeof p === "number" && Number.isFinite(p)) return p;
@@ -31,15 +37,16 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
     if (format === "A3") return parsePrice(produit.prix_print_A3);
     if (format === "toile") return parsePrice(produit.prix);
     if (format === "carte") return parsePrice(produit.prix_carte);
-    // fallback: prefer print A4/A3 if available, else toile
-    return (
-      parsePrice(produit.prix_print_A4) ??
-      parsePrice(produit.prix_print_A3) ??
-      parsePrice(produit.prix)
-    );
+    // Si aucun format n'est sélectionné, retourner null
+    return null;
   };
 
   const handleAdd = () => {
+    if (format === "") {
+      alert("Veuillez sélectionner un format avant d'ajouter au panier.");
+      return;
+    }
+
     const prix = getSelectedPrice();
     if (prix == null) {
       alert("Prix non disponible pour ce format.");
@@ -52,6 +59,23 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
       prix: Number(prix),
       qty: 1,
     });
+
+    // Déclencher l'effet confetti
+    if (jsConfettiRef.current) {
+      jsConfettiRef.current.addConfetti({
+        confettiColors: [
+          "#ff6b6b",
+          "#4ecdc4",
+          "#45b7d1",
+          "#96ceb4",
+          "#feca57",
+          "#ff9ff3",
+          "#54a0ff",
+        ],
+        confettiRadius: 6,
+        confettiNumber: 80,
+      });
+    }
   };
 
   return (
