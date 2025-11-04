@@ -22,6 +22,12 @@ export default function GalleryClient({
   const { selectedFormat } = useProductDetail();
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [firstImageDimensions, setFirstImageDimensions] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
 
   // Fonction pour obtenir les images selon le format sélectionné
   const getCurrentImages = () => {
@@ -56,17 +62,27 @@ export default function GalleryClient({
   // S'assurer que l'index est valide pour les images actuelles
   const safeIndex = Math.min(index, Math.max(0, currentImages.length - 1));
 
+  // Créer une clé unique pour forcer le rechargement quand le format change
+  const imageKey = `${selectedFormat}-${currentImages[0] || "default"}`;
+
   // Distance minimale pour déclencher un swipe
   const minSwipeDistance = 50;
 
-  // Gestionnaires de swipe
+  // Gestionnaires de swipe avec effet de glissement
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
+    setIsDragging(true);
+    setDragOffset(0);
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    if (!touchStart) return;
+
+    const currentTouch = e.targetTouches[0].clientX;
+    const diff = currentTouch - touchStart;
+    setTouchEnd(currentTouch);
+    setDragOffset(diff);
   };
 
   const onTouchEnd = () => {
@@ -82,28 +98,64 @@ export default function GalleryClient({
     if (isRightSwipe && safeIndex > 0) {
       setIndex(safeIndex - 1);
     }
+
+    // Reset drag state
+    setIsDragging(false);
+    setDragOffset(0);
   };
 
   return (
     <div className="w-full max-w-[1300px] flex flex-col md:flex-row items-center md:items-start gap-8">
       {/* Images à gauche sur desktop */}
       <div className="md:w-1/2 flex flex-col md:flex-row items-center md:items-start gap-4 order-1 md:order-1">
-        {/* Image principale */}
-        <div
-          className="w-full md:flex-1 max-w-[320px] md:max-w-[400px] order-2 md:order-1 touch-pan-y md:touch-auto"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
-          {currentImages.length > 0 && (
-            <Image
-              src={currentImages[safeIndex] || currentImages[0] || images[0]}
-              alt={`image-${safeIndex}`}
-              width={700}
-              height={700}
-              className="rounded-xl w-full h-auto object-contain select-none"
-            />
-          )}
+        {/* Carrousel principal avec effet de slide */}
+        <div className="w-full md:flex-1 max-w-[320px] md:max-w-[400px] order-2 md:order-1">
+          <div
+            className="relative overflow-hidden rounded-xl bg-white/10 shadow-lg touch-pan-y md:touch-auto"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
+            <div
+              className={`flex transition-transform duration-300 ease-out ${
+                isDragging ? "transition-none" : ""
+              }`}
+              style={{
+                transform: `translateX(calc(-${safeIndex * 100}% + ${
+                  isDragging ? dragOffset : 0
+                }px))`,
+              }}
+            >
+              {currentImages.map((src, i) => (
+                <div
+                  key={`${imageKey}-${i}`}
+                  className="w-full flex-shrink-0"
+                  style={{
+                    aspectRatio: firstImageDimensions
+                      ? `${firstImageDimensions.width} / ${firstImageDimensions.height}`
+                      : undefined,
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={`image-${i}`}
+                    width={700}
+                    height={700}
+                    className="w-full h-full object-contain select-none"
+                    onLoad={(e) => {
+                      if (!firstImageDimensions && i === 0) {
+                        const img = e.target as HTMLImageElement;
+                        setFirstImageDimensions({
+                          width: img.naturalWidth,
+                          height: img.naturalHeight,
+                        });
+                      }
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Indicateurs de swipe sur mobile */}
           {currentImages.length > 1 && (
@@ -111,7 +163,7 @@ export default function GalleryClient({
               {currentImages.map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full ${
+                  className={`w-2 h-2 rounded-full transition-colors duration-200 ${
                     i === safeIndex ? "bg-white" : "bg-white/30"
                   }`}
                 />
