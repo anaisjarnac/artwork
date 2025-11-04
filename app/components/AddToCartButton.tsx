@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useCart } from "./CartProvider";
+import { useProductDetail } from "./ProductDetailProvider";
 import JSConfetti from "js-confetti";
 
 type Product = {
@@ -14,9 +15,8 @@ type Product = {
 
 export default function AddToCartButton({ produit }: { produit: Product }) {
   const { addItem } = useCart();
-  const [format, setFormat] = useState<"A4" | "A3" | "toile" | "carte" | "">(
-    ""
-  );
+  const { selectedFormat: format, setSelectedFormat: setFormat } =
+    useProductDetail();
   const jsConfettiRef = useRef<JSConfetti | null>(null);
 
   useEffect(() => {

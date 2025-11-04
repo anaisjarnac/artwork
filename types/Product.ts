@@ -7,5 +7,8 @@ export interface Product {
   prix_print_A3?: number;
   prix_carte?: number;
   images: string[];
+  images_print?: string[];
+  images_toile?: string[];
+  images_carte?: string[];
   description: string;
 }

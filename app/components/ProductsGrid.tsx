@@ -26,12 +26,12 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
               href={`/produit/${produit.id}`}
               className="group flex flex-col items-center text-center w-full no-underline text-inherit"
             >
-              <div className="relative w-full max-w-[520px] mx-auto overflow-hidden rounded-2xl shadow-lg">
+              <div className="relative w-full max-w-[300px] mx-auto overflow-hidden rounded-2xl shadow-lg">
                 <Image
                   src={produit.images?.[0] ?? ""}
                   alt={produit.nom}
-                  width={520}
-                  height={520}
+                  width={300}
+                  height={300}
                   className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   priority
                 />

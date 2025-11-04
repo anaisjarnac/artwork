@@ -7,11 +7,16 @@ export const produits: Product[] = [
     prix_print_A4: 20,
     prix_print_A3: 35,
     prix_carte: 5,
-
     prix: 250,
     images: [
       "/images/jpeg/kurt.jpg",
       "/images/cadre/kurtcadre.png",
+      "/images/kurt.jpeg",
+      "/images/kurt1.jpeg",
+      "/images/kurt2.jpeg",
+    ],
+    images_print: ["/images/jpeg/kurt.jpg", "/images/cadre/kurtcadre.png"],
+    images_toile: [
       "/images/kurt.jpeg",
       "/images/kurt1.jpeg",
       "/images/kurt2.jpeg",
@@ -31,6 +36,8 @@ export const produits: Product[] = [
       "/images/david.jpeg",
       "/images/david1.jpeg",
     ],
+    images_print: ["/images/jpeg/A3.jpg", "/images/cadre/bowiecadre.png"],
+    images_toile: ["/images/david.jpeg", "/images/david1.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -43,6 +50,12 @@ export const produits: Product[] = [
     images: [
       "/images/jpeg/jul.jpg",
       "/images/cadre/julcadre.png",
+      "/images/jul.jpeg",
+      "/images/jul1.jpeg",
+      "/images/jul2.jpeg",
+    ],
+    images_print: ["/images/jpeg/jul.jpg", "/images/cadre/julcadre.png"],
+    images_toile: [
       "/images/jul.jpeg",
       "/images/jul1.jpeg",
       "/images/jul2.jpeg",
@@ -63,6 +76,11 @@ export const produits: Product[] = [
       "/images/dali.jpeg",
       "/images/dali1.jpeg",
     ],
+    images_print: [
+      "/images/jpeg/A3daliFINAL.jpg",
+      "/images/cadre/dalicadre.png",
+    ],
+    images_toile: ["/images/dali.jpeg", "/images/dali1.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -78,6 +96,11 @@ export const produits: Product[] = [
       "/images/cadre/serpentcadre.png",
       "/images/ricard.jpeg",
     ],
+    images_print: [
+      "/images/jpeg/serpent.jpg",
+      "/images/cadre/serpentcadre.png",
+    ],
+    images_toile: ["/images/ricard.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -92,6 +115,8 @@ export const produits: Product[] = [
       "/images/soeur.jpeg",
       "/images/soeur1.jpeg",
     ],
+    images_print: ["/images/jpeg/x.jpg", "/images/cadre/xcadre.png"],
+    images_toile: ["/images/soeur.jpeg", "/images/soeur1.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -107,6 +132,8 @@ export const produits: Product[] = [
       "/images/sch.jpeg",
       "/images/sch1.jpeg",
     ],
+    images_print: ["/images/jpeg/A3sch.jpg", "/images/cadre/schcadre.png"],
+    images_toile: ["/images/sch.jpeg", "/images/sch1.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -120,6 +147,8 @@ export const produits: Product[] = [
       "/images/cadre/jujucadre.png",
       "/images/jujujul.jpeg",
     ],
+    images_print: ["/images/jpeg/jujulA3.jpg", "/images/cadre/jujucadre.png"],
+    images_toile: ["/images/jujujul.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -135,6 +164,11 @@ export const produits: Product[] = [
       "/images/pulp.jpeg",
       "/images/pulp1.jpeg",
     ],
+    images_print: [
+      "/images/jpeg/A3pulpnoir.jpg",
+      "/images/cadre/pulpcadre.png",
+    ],
+    images_toile: ["/images/pulp.jpeg", "/images/pulp1.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -150,6 +184,8 @@ export const produits: Product[] = [
       "/images/pink.jpeg",
       "/images/pink1.jpeg",
     ],
+    images_print: ["/images/jpeg/FLOYDA3.jpg", "/images/cadre/pinkcadre.png"],
+    images_toile: ["/images/pink.jpeg", "/images/pink1.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -165,6 +201,8 @@ export const produits: Product[] = [
       "/images/frida.jpeg",
       "/images/frida1.jpeg",
     ],
+    images_print: ["/images/jpeg/A3frida.jpg", "/images/cadre/madamecadre.png"],
+    images_toile: ["/images/frida.jpeg", "/images/frida1.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
   {
@@ -175,6 +213,11 @@ export const produits: Product[] = [
       "/images/cadre/chounecadre.png",
       "/images/choune.jpeg",
     ],
+    images_print: [
+      "/images/jpeg/A3chounenoir.jpg",
+      "/images/cadre/chounecadre.png",
+    ],
+    images_toile: ["/images/choune.jpeg"],
     prix: 300,
     prix_print_A4: 20,
     prix_print_A3: 35,
@@ -199,6 +242,8 @@ export const produits: Product[] = [
       "/images/famille1.jpeg",
       "/images/famille2.jpeg",
     ],
+    images_print: ["/images/jpeg/542cb50e-5137-4eac-94e5-ec3f4a48c86b.jpg"],
+    images_toile: ["/images/famille1.jpeg", "/images/famille2.jpeg"],
     description: "Prints ou Acrylique sur toile",
   },
 ];
