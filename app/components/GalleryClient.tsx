@@ -20,6 +20,8 @@ export default function GalleryClient({
 }: GalleryClientProps) {
   const [index, setIndex] = useState(0);
   const { selectedFormat } = useProductDetail();
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Fonction pour obtenir les images selon le format sélectionné
   const getCurrentImages = () => {
@@ -54,20 +56,67 @@ export default function GalleryClient({
   // S'assurer que l'index est valide pour les images actuelles
   const safeIndex = Math.min(index, Math.max(0, currentImages.length - 1));
 
+  // Distance minimale pour déclencher un swipe
+  const minSwipeDistance = 50;
+
+  // Gestionnaires de swipe
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && safeIndex < currentImages.length - 1) {
+      setIndex(safeIndex + 1);
+    }
+    if (isRightSwipe && safeIndex > 0) {
+      setIndex(safeIndex - 1);
+    }
+  };
+
   return (
     <div className="w-full max-w-[1300px] flex flex-col md:flex-row items-center md:items-start gap-8">
       {/* Images à gauche sur desktop */}
       <div className="md:w-1/2 flex flex-col md:flex-row items-center md:items-start gap-4 order-1 md:order-1">
         {/* Image principale */}
-        <div className="w-full md:flex-1 max-w-[320px] md:max-w-[400px] order-2 md:order-1">
+        <div
+          className="w-full md:flex-1 max-w-[320px] md:max-w-[400px] order-2 md:order-1 touch-pan-y md:touch-auto"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {currentImages.length > 0 && (
             <Image
               src={currentImages[safeIndex] || currentImages[0] || images[0]}
               alt={`image-${safeIndex}`}
               width={700}
               height={700}
-              className="rounded-xl w-full h-auto object-contain"
+              className="rounded-xl w-full h-auto object-contain select-none"
             />
+          )}
+
+          {/* Indicateurs de swipe sur mobile */}
+          {currentImages.length > 1 && (
+            <div className="flex justify-center mt-2 gap-2 md:hidden">
+              {currentImages.map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-2 h-2 rounded-full ${
+                    i === safeIndex ? "bg-white" : "bg-white/30"
+                  }`}
+                />
+              ))}
+            </div>
           )}
         </div>
 
