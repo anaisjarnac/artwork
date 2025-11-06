@@ -226,13 +226,20 @@ export const produits: Product[] = [
   },
   {
     id: 13,
-    nom: "CARTES",
+    nom: "STAR",
     images: ["/images/cartes.png"],
     prix_carte: 20,
     description: "Lot de 4 cartes postales 10x15cm",
   },
   {
     id: 14,
+    nom: "MARSEILLE",
+    images: ["/images/marseille.png"],
+    prix_carte: 20,
+    description: "Lot de 4 cartes postales 10x15cm",
+  },
+  {
+    id: 15,
     nom: "PICNIC",
     prix_print_A4: 20,
     prix_print_A3: 35,
