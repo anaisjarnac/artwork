@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import HeartCursor from "./components/HeartCursor";
+import SplashScreen from "./components/SplashScreen";
 import { useEffect } from "react";
 import { CartProvider } from "./components/CartProvider";
 import CartDrawer from "./components/CartDrawer";
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
+        <SplashScreen />
         <HeartCursor />
         <CartProvider>
           <CartDrawer />
