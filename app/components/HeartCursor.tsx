@@ -12,7 +12,7 @@ export default function HeartCursor() {
 
   return (
     <div
-      className="pointer-events-none fixed z-[9999] text-pink-500 text-3xl transition-transform duration-75 hidden md:block"
+      className="pointer-events-none fixed z-[999999] text-pink-500 text-3xl transition-transform duration-75 hidden md:block"
       style={{
         left: `${pos.x}px`,
         top: `${pos.y}px`,
