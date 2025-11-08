@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useProductDetail } from "./ProductDetailProvider";
+import { useProductDetail } from "../ProductDetailProvider";
 
 type Product = {
   id: number;

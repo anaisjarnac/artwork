@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useProductDetail } from "./ProductDetailProvider";
+import { useProductDetail } from "../ProductDetailProvider";
 import { Expand, X } from "lucide-react";
-import { monoTrust } from "../fonts";
+import { monoTrust } from "../../fonts";
+import { useWindowSize } from "../../hooks/use-window-size";
 
 type GalleryClientProps = {
   images: string[];
@@ -11,7 +12,6 @@ type GalleryClientProps = {
   images_toile?: string[];
   images_carte?: string[];
   productInfo?: React.ReactNode;
-  title?: string;
 };
 
 export default function GalleryClient({
@@ -19,7 +19,6 @@ export default function GalleryClient({
   images_print,
   images_toile,
   images_carte,
-  title,
 }: GalleryClientProps) {
   const [index, setIndex] = useState(0);
   const { selectedFormat } = useProductDetail();
@@ -37,12 +36,19 @@ export default function GalleryClient({
   const [computedHeight, setComputedHeight] = useState<number | null>(null);
   const galleryElementRef = React.useRef<HTMLDivElement | null>(null);
 
+  const { width, height, isMobile } = useWindowSize();
+
   function onImageLoaded() {
     if (galleryElementRef.current) {
       const { height } = galleryElementRef.current.getBoundingClientRect();
       setComputedHeight(height);
     }
   }
+
+  // React.useEffect(() => {
+  //   // for debugging responsiveness issues
+  //   if (location?.hostname === "localhost") onImageLoaded();
+  // }, [width, height]);
 
   // Fonction pour obtenir les images selon le format sélectionné
   const getCurrentImages = () => {
@@ -129,28 +135,15 @@ export default function GalleryClient({
   };
 
   return (
-    <div
-      ref={galleryElementRef}
-      style={{
-        height: computedHeight ? `${computedHeight}px` : "auto",
-      }}
-      // style={{
-      //   height: "120px",
-      //   overflow: "hidden",
-      // }}
-      className="w-full max-w-[1300px] flex flex-col md:flex-row items-center md:items-start gap-8"
-    >
+    <>
       {/* Images à gauche sur desktop */}
-      <div className="md:w-1/2 flex flex-col md:flex-row items-center md:items-start gap-4 order-1 md:order-1">
-        {/* Titre en mode mobile uniquement */}
-        {title && (
-          <h1
-            className={`${monoTrust.className} text-2xl text-white font-bold mb-2 tracking-tight text-center md:hidden w-full`}
-          >
-            {title}
-          </h1>
-        )}
-
+      <div
+        ref={galleryElementRef}
+        style={{
+          height: computedHeight ? `${computedHeight}px` : "auto",
+        }}
+        className="flex flex-col md:flex-row items-center md:items-start gap-4 order-1 md:order-1"
+      >
         {/* Carrousel principal avec effet de slide */}
         <div className="w-full md:flex-1 max-w-[320px] md:max-w-[400px] order-2 md:order-1">
           <div
@@ -202,7 +195,7 @@ export default function GalleryClient({
                           height: img.naturalHeight,
                         });
                       }
-                      onImageLoaded();
+                      // setTimeout(onImageLoaded, 1000);
                     }}
                   />
                 </div>
@@ -285,6 +278,6 @@ export default function GalleryClient({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

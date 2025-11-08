@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { useCart } from "./CartProvider";
-import { useProductDetail } from "./ProductDetailProvider";
+import { useProductDetail } from "../ProductDetailProvider";
 import JSConfetti from "js-confetti";
 
 type Product = {

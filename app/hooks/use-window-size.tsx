@@ -1,16 +1,24 @@
 "use client";
 
+import { get } from "http";
 import { useState, useEffect } from "react";
 
 interface WindowSize {
   width: number | undefined;
   height: number | undefined;
+  isMobile: boolean | undefined;
+}
+
+function getIsMobile(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.innerWidth < 768;
 }
 
 export function useWindowSize(): WindowSize {
   const [windowSize, setWindowSize] = useState<WindowSize>(() => ({
     width: typeof window !== "undefined" ? window.innerWidth : undefined,
     height: typeof window !== "undefined" ? window.innerHeight : undefined,
+    isMobile: getIsMobile(),
   }));
 
   useEffect(() => {
@@ -20,6 +28,7 @@ export function useWindowSize(): WindowSize {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
+        isMobile: window.innerWidth < 768,
       });
     }
 
@@ -59,6 +68,7 @@ export function useDebouncedWindowSize(delay: number = 250): WindowSize {
   const [windowSize, setWindowSize] = useState<WindowSize>(() => ({
     width: typeof window !== "undefined" ? window.innerWidth : undefined,
     height: typeof window !== "undefined" ? window.innerHeight : undefined,
+    isMobile: getIsMobile(),
   }));
 
   useEffect(() => {
@@ -70,6 +80,7 @@ export function useDebouncedWindowSize(delay: number = 250): WindowSize {
         setWindowSize({
           width: window.innerWidth,
           height: window.innerHeight,
+          isMobile: getIsMobile(),
         });
       }, delay);
     }

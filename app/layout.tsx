@@ -4,8 +4,8 @@ import "./globals.css";
 import HeartCursor from "./components/HeartCursor";
 import SplashScreen from "./components/SplashScreen";
 import { useEffect } from "react";
-import { CartProvider } from "./components/CartProvider";
-import CartDrawer from "./components/CartDrawer";
+import { CartProvider } from "./components/page-produit/CartProvider";
+import CartDrawer from "./components/page-produit/CartDrawer";
 import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({
