@@ -17,7 +17,7 @@ export default function HomePage() {
         {/* Desktop: Logo centered with buttons on right */}
         <div className="w-full md:relative flex items-center justify-center">
           <LogoHover />
-          <div className="hidden md:flex md:absolute right-0 items-center gap-4">
+          <div className="hidden md:flex md:absolute right-0 items-center gap-4 z-50">
             <SearchButton produits={produits} />
             <CartButton />
           </div>

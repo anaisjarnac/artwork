@@ -8,7 +8,6 @@ export default function CartButton() {
 
   // ✅ Indique quand le composant est monté côté client
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -16,7 +15,7 @@ export default function CartButton() {
     <button
       onClick={toggle}
       aria-label="Ouvrir le panier"
-      className="inline-flex items-center p-2 rounded-full bg-white shadow"
+      className="inline-flex items-center p-2 rounded-full bg-white shadow pointer-events-auto hover:shadow-md transition-shadow"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

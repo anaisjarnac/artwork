@@ -110,9 +110,8 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
         {format ? (
           <button
             onClick={handleAdd}
-            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+            className="w-full bg-gradient-to-r from-pink-300 to-pink-500 hover:from-pink-500 hover:to-rose-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
           >
-            <span>🛒</span>
             Ajouter au panier
             <span className="bg-white/20 px-2 py-1 rounded-full text-sm">
               {getSelectedPrice()}€
@@ -120,9 +119,7 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
           </button>
         ) : (
           <div className="w-full bg-white/10 backdrop-blur-sm rounded-full py-4 px-8 border-2 border-dashed border-white/30 text-center">
-            <p className="text-white/70 font-medium">
-              👆 Choisissez un format ci-dessus pour continuer
-            </p>
+            <p className="text-white/70 font-medium">👆 Choisissez un format</p>
           </div>
         )}
       </div>

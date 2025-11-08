@@ -8,7 +8,7 @@ import { ProductDetailProvider } from "../../components/ProductDetailProvider";
 import PriceCards from "../../components/PriceCards";
 import type { Product } from "../../../types/Product";
 import { ArrowLeft } from "lucide-react";
-import { monoTrust, poppins } from "../../fonts";
+import { poppins } from "../../fonts";
 
 export default async function ProduitPage({
   params,
@@ -33,7 +33,7 @@ export default async function ProduitPage({
       <main className="min-h-screen bg-[#4b5ae4] pt-2 px-4 pb-4 md:pt-3 md:px-6 md:pb-6 flex flex-col items-center">
         <div className="w-full max-w-[1300px] relative mb-2 pointer-events-none">
           {/* Mobile: cart button on top right */}
-          <div className="flex items-center md:hidden w-full justify-end mb-4">
+          <div className="flex items-center md:hidden w-full justify-end mb-4 pointer-events-auto">
             <CartButton />
           </div>
 
@@ -75,14 +75,10 @@ export default async function ProduitPage({
           images_print={produit.images_print}
           images_toile={produit.images_toile}
           images_carte={produit.images_carte}
+          title={produit.nom}
         />
         <div className="md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left px-4 order-2 md:order-2">
           <div className="w-full">
-            <h1
-              className={`${monoTrust.className} text-3xl md:text-4xl text-white font-bold mb-4 tracking-tight`}
-            >
-              {produit.nom}
-            </h1>
             <p
               className={`${poppins.className} text-white text-lg mb-6 max-w-lg font-medium`}
             >

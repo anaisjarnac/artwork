@@ -35,7 +35,7 @@ export default function CartDrawer() {
   };
 
   return (
-    <div className="fixed right-4 top-4 z-50 w-80 max-w-full bg-white/95 backdrop-blur-sm shadow-lg rounded-lg p-4">
+    <div className="fixed right-6 top-6 z-[9999] w-80 max-w-full bg-white/95 backdrop-blur-sm shadow-xl rounded-lg p-4 border border-gray-200">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-bold text-gray-900">Panier</h3>
         <div className="flex items-center gap-2">
