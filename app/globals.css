@@ -91,20 +91,6 @@ body {
   z-index: 1;
 }
 
-/* Masquer le curseur par défaut sur desktop et laisser seulement la cerise */
-@media (min-width: 768px) {
-  * {
-    cursor: none !important;
-  }
-
-  /* Exceptions pour les inputs et textareas où le curseur texte est nécessaire */
-  input,
-  textarea,
-  [contenteditable] {
-    cursor: text !important;
-  }
-}
-
 /* Animation d'apparition */
 @keyframes fadeIn {
   from {

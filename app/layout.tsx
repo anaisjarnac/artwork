@@ -1,7 +1,6 @@
 "use client";
 
 import "./globals.css";
-import HeartCursor from "./components/HeartCursor";
 import SplashScreen from "./components/SplashScreen";
 import { useEffect } from "react";
 import { CartProvider } from "./components/page-produit/CartProvider";
@@ -25,7 +24,6 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         <SplashScreen />
-        <HeartCursor />
         <CartProvider>
           <CartDrawer />
           {children}
