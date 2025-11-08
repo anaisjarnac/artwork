@@ -77,7 +77,7 @@ export default function PriceCards({ produit }: PriceCardsProps) {
           >
             {/* Badge de sélection */}
             {selectedFormat === format.id && (
-              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-pink-400 to-rose-400 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-lg">
+              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-pink-400 to-rose-400 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-lg animate-bounce">
                 ✓
               </div>
             )}
