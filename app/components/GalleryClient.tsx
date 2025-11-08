@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useProductDetail } from "./ProductDetailProvider";
+import { Expand, X } from "lucide-react";
 
 type GalleryClientProps = {
   images: string[];
@@ -28,6 +29,8 @@ export default function GalleryClient({
   } | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [fullscreenIndex, setFullscreenIndex] = useState(0);
 
   // Fonction pour obtenir les images selon le format sélectionné
   const getCurrentImages = () => {
@@ -104,6 +107,15 @@ export default function GalleryClient({
     setDragOffset(0);
   };
 
+  const openFullscreen = (imageIndex: number) => {
+    setFullscreenIndex(imageIndex);
+    setIsFullscreen(true);
+  };
+
+  const closeFullscreen = () => {
+    setIsFullscreen(false);
+  };
+
   return (
     <div className="w-full max-w-[1300px] flex flex-col md:flex-row items-center md:items-start gap-8">
       {/* Images à gauche sur desktop */}
@@ -111,11 +123,19 @@ export default function GalleryClient({
         {/* Carrousel principal avec effet de slide */}
         <div className="w-full md:flex-1 max-w-[320px] md:max-w-[400px] order-2 md:order-1">
           <div
-            className="relative overflow-hidden rounded-xl bg-white/10 shadow-lg touch-pan-y md:touch-auto"
+            className="relative overflow-hidden rounded-xl bg-white/10 shadow-lg touch-pan-y md:touch-auto group"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
+            {/* Bouton de zoom */}
+            <button
+              onClick={() => openFullscreen(safeIndex)}
+              className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200"
+              aria-label="Agrandir l'image"
+            >
+              <Expand size={20} />
+            </button>
             <div
               className={`flex transition-transform duration-300 ease-out ${
                 isDragging ? "transition-none" : ""
@@ -199,6 +219,44 @@ export default function GalleryClient({
       <div className="md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left px-4 order-2 md:order-2">
         {productInfo}
       </div>
+
+      {/* Modal Fullscreen */}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+          <button
+            onClick={closeFullscreen}
+            className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-colors z-10"
+            aria-label="Fermer"
+          >
+            <X size={24} />
+          </button>
+
+          <div className="relative max-w-[90vw] max-h-[90vh]">
+            <Image
+              src={currentImages[fullscreenIndex]}
+              alt={`Image ${fullscreenIndex + 1} en grand`}
+              width={1200}
+              height={1200}
+              className="max-w-full max-h-full object-contain"
+            />
+
+            {/* Navigation dans le fullscreen */}
+            {currentImages.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 bg-black/50 rounded-full p-2">
+                {currentImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setFullscreenIndex(i)}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      i === fullscreenIndex ? "bg-white" : "bg-white/30"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

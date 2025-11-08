@@ -5,7 +5,10 @@ import GalleryClient from "../../components/GalleryClient";
 import AddToCartButton from "../../components/AddToCartButton";
 import CartButton from "../../components/CartButton";
 import { ProductDetailProvider } from "../../components/ProductDetailProvider";
+import PriceCards from "../../components/PriceCards";
 import type { Product } from "../../../types/Product";
+import { ArrowLeft } from "lucide-react";
+import { monoTrust, poppins } from "../../fonts";
 
 export default async function ProduitPage({
   params,
@@ -39,12 +42,9 @@ export default async function ProduitPage({
             aria-label="Retour à l'accueil"
             className="absolute left-0 top-1/2 transform -translate-y-1/2 z-0 pointer-events-auto hidden md:block"
           >
-            <Image
-              src="/images/arrow.png"
-              alt="back"
-              width={40}
-              height={40}
-              className="h-auto w-auto"
+            <ArrowLeft
+              size={40}
+              className="text-white hover:text-gray-300 transition-colors"
             />
           </Link>
 
@@ -77,12 +77,18 @@ export default async function ProduitPage({
           images_carte={produit.images_carte}
           productInfo={
             <div className="w-full">
-              <h1 className="text-3xl md:text-4xl text-white font-bold mb-4">
+              <h1
+                className={`${monoTrust.className} text-3xl md:text-4xl text-white font-bold mb-4 tracking-tight`}
+              >
                 {produit.nom}
               </h1>
-              <p className="text-white text-lg mb-6 max-w-lg">
+              <p
+                className={`${poppins.className} text-white text-lg mb-6 max-w-lg font-medium`}
+              >
                 {produit.description}
               </p>
+
+              <PriceCards produit={produit} />
 
               {isSold ? (
                 <p className="text-xl text-red-400 font-semibold">Vendu 🖤</p>

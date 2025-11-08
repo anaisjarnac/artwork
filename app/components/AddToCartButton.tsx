@@ -79,12 +79,13 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
   };
 
   return (
-    <div className="mt-4 inline-flex items-center gap-3">
+    <div className="mt-6 flex flex-col items-center">
+      {/* Sélecteur caché - les cartes gèrent maintenant la sélection */}
       <select
         value={format}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onChange={(e) => setFormat(e.target.value as any)}
-        className="bg-white/90 text-sm px-3 py-2 rounded"
+        className="hidden"
         aria-label="Choisir le format"
       >
         <option value="">Format</option>
@@ -104,12 +105,27 @@ export default function AddToCartButton({ produit }: { produit: Product }) {
         )}
       </select>
 
-      <button
-        onClick={handleAdd}
-        className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 active:scale-95 shadow-lg hover:shadow-xl"
-      >
-        Ajouter au panier
-      </button>
+      {/* Bouton d'achat modernisé */}
+      <div className="w-full max-w-sm">
+        {format ? (
+          <button
+            onClick={handleAdd}
+            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+          >
+            <span>🛒</span>
+            Ajouter au panier
+            <span className="bg-white/20 px-2 py-1 rounded-full text-sm">
+              {getSelectedPrice()}€
+            </span>
+          </button>
+        ) : (
+          <div className="w-full bg-white/10 backdrop-blur-sm rounded-full py-4 px-8 border-2 border-dashed border-white/30 text-center">
+            <p className="text-white/70 font-medium">
+              👆 Choisissez un format ci-dessus pour continuer
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -6,8 +6,8 @@ import ProductsGrid from "./components/ProductsGrid";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen flex flex-col items-center p-8">
-      <div className="w-full max-w-[1300px] flex flex-col md:flex-row items-center justify-center mb-8 gap-4">
+    <main className="min-h-screen flex flex-col items-center p-4 md:p-8 futuristic-content homepage-gradient">
+      <div className="w-full max-w-[1300px] flex flex-col md:flex-row items-center justify-center mb-12 gap-4">
         {/* Mobile: cart button on top right, Logo below */}
         <div className="flex items-center md:hidden w-full justify-end">
           <CartButton />

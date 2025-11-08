@@ -21,7 +21,7 @@ export const produits: Product[] = [
       "/images/kurt1.jpeg",
       "/images/kurt2.jpeg",
     ],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ export const produits: Product[] = [
     ],
     images_print: ["/images/jpeg/A3.jpg", "/images/cadre/bowiecadre.png"],
     images_toile: ["/images/david.jpeg", "/images/david1.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 3,
@@ -60,7 +60,7 @@ export const produits: Product[] = [
       "/images/jul1.jpeg",
       "/images/jul2.jpeg",
     ],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 4,
@@ -81,7 +81,7 @@ export const produits: Product[] = [
       "/images/cadre/dalicadre.png",
     ],
     images_toile: ["/images/dali.jpeg", "/images/dali1.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 5,
@@ -101,7 +101,7 @@ export const produits: Product[] = [
       "/images/cadre/serpentcadre.png",
     ],
     images_toile: ["/images/ricard.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 6,
@@ -117,7 +117,7 @@ export const produits: Product[] = [
     ],
     images_print: ["/images/jpeg/x.jpg", "/images/cadre/xcadre.png"],
     images_toile: ["/images/soeur.jpeg", "/images/soeur1.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 7,
@@ -134,7 +134,7 @@ export const produits: Product[] = [
     ],
     images_print: ["/images/jpeg/A3sch.jpg", "/images/cadre/schcadre.png"],
     images_toile: ["/images/sch.jpeg", "/images/sch1.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 8,
@@ -149,7 +149,7 @@ export const produits: Product[] = [
     ],
     images_print: ["/images/jpeg/jujulA3.jpg", "/images/cadre/jujucadre.png"],
     images_toile: ["/images/jujujul.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 9,
@@ -169,7 +169,7 @@ export const produits: Product[] = [
       "/images/cadre/pulpcadre.png",
     ],
     images_toile: ["/images/pulp.jpeg", "/images/pulp1.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 10,
@@ -186,7 +186,7 @@ export const produits: Product[] = [
     ],
     images_print: ["/images/jpeg/FLOYDA3.jpg", "/images/cadre/pinkcadre.png"],
     images_toile: ["/images/pink.jpeg", "/images/pink1.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 11,
@@ -203,7 +203,7 @@ export const produits: Product[] = [
     ],
     images_print: ["/images/jpeg/A3frida.jpg", "/images/cadre/madamecadre.png"],
     images_toile: ["/images/frida.jpeg", "/images/frida1.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 12,
@@ -222,7 +222,7 @@ export const produits: Product[] = [
     prix_print_A4: 20,
     prix_print_A3: 35,
     prix_carte: 5,
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
   {
     id: 13,
@@ -251,6 +251,6 @@ export const produits: Product[] = [
     ],
     images_print: ["/images/jpeg/542cb50e-5137-4eac-94e5-ec3f4a48c86b.jpg"],
     images_toile: ["/images/famille1.jpeg", "/images/famille2.jpeg"],
-    description: "Prints ou Acrylique sur toile",
+    description: "",
   },
 ];
