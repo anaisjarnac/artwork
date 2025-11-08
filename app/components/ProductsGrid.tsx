@@ -21,7 +21,7 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
       {filtered.length === 0 ? (
         <div className="text-center text-gray-600">Aucun résultat</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 md:gap-y-15 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-8 md:gap-y-15 w-full">
           {filtered.map((produit, index) => (
             <Link
               key={produit.id}
@@ -75,12 +75,16 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
                       Carte
                     </span>
                   )}
-                  <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
-                    A4
-                  </span>
-                  <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
-                    A3
-                  </span>
+                  {produit.prix_print_A4 && (
+                    <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
+                      A4
+                    </span>
+                  )}
+                  {produit.prix_print_A3 && (
+                    <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
+                      A3
+                    </span>
+                  )}
                   {produit.prix && (
                     <span className="bg-purple-100 text-purple-600 px-2 py-1 rounded-full text-xs font-medium">
                       Toile
