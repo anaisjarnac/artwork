@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useProductDetail } from "./ProductDetailProvider";
 import { Expand, X } from "lucide-react";
+import { useWindowSize } from "../hooks/use-window-size";
 
 type GalleryClientProps = {
   images: string[];
@@ -31,6 +32,47 @@ export default function GalleryClient({
   const [dragOffset, setDragOffset] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [fullscreenIndex, setFullscreenIndex] = useState(0);
+
+  const [computedHeight, setComputedHeight] = useState<number | null>(null);
+  const galleryElementRef = React.useRef<HTMLDivElement | null>(null);
+  const { width, height } = useWindowSize();
+
+  React.useEffect(() => {
+    function computeHeight() {
+      if (galleryElementRef.current) {
+        const { height } = galleryElementRef.current.getBoundingClientRect();
+        setComputedHeight(height);
+      }
+    }
+
+    // preload all image in browser cache
+    function preloadAllImages() {
+      const allImages = [
+        ...images,
+        ...(images_print || []),
+        ...(images_toile || []),
+        ...(images_carte || []),
+      ];
+
+      // Remove duplicates by converting to Set and back to array
+      const uniqueImages = Array.from(new Set(allImages));
+
+      uniqueImages.forEach((src) => {
+        const img = document.createElement("img");
+        img.src = src;
+      });
+    }
+
+    // Call preload function
+    preloadAllImages();
+
+    // Compute height when component mounts or window size changes
+    if (width && height) {
+      // Small delay to ensure DOM has updated after resize
+      const timeoutId = setTimeout(computeHeight, 2000);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [width, height, images, images_print, images_toile, images_carte]);
 
   // Fonction pour obtenir les images selon le format sélectionné
   const getCurrentImages = () => {
@@ -117,7 +159,17 @@ export default function GalleryClient({
   };
 
   return (
-    <div className="w-full max-w-[1300px] flex flex-col md:flex-row items-center md:items-start gap-8">
+    <div
+      ref={galleryElementRef}
+      style={{
+        height: computedHeight ? `${computedHeight}px` : "auto",
+      }}
+      // style={{
+      //   height: "120px",
+      //   overflow: "hidden",
+      // }}
+      className="w-full max-w-[1300px] flex flex-col md:flex-row items-center md:items-start gap-8"
+    >
       {/* Images à gauche sur desktop */}
       <div className="md:w-1/2 flex flex-col md:flex-row items-center md:items-start gap-4 order-1 md:order-1">
         {/* Carrousel principal avec effet de slide */}
@@ -214,11 +266,6 @@ export default function GalleryClient({
             </button>
           ))}
         </div>
-      </div>
-
-      {/* Informations du produit à droite sur desktop */}
-      <div className="md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left px-4 order-2 md:order-2">
-        {productInfo}
       </div>
 
       {/* Modal Fullscreen */}

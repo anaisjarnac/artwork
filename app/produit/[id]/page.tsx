@@ -75,31 +75,29 @@ export default async function ProduitPage({
           images_print={produit.images_print}
           images_toile={produit.images_toile}
           images_carte={produit.images_carte}
-          productInfo={
-            <div className="w-full">
-              <h1
-                className={`${monoTrust.className} text-3xl md:text-4xl text-white font-bold mb-4 tracking-tight`}
-              >
-                {produit.nom}
-              </h1>
-              <p
-                className={`${poppins.className} text-white text-lg mb-6 max-w-lg font-medium`}
-              >
-                {produit.description}
-              </p>
-
-              <PriceCards produit={produit} />
-
-              {isSold ? (
-                <p className="text-xl text-red-400 font-semibold">Vendu 🖤</p>
-              ) : (
-                <AddToCartButton
-                  produit={{ ...produit, prix: produit.prix! }}
-                />
-              )}
-            </div>
-          }
         />
+        <div className="md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left px-4 order-2 md:order-2">
+          <div className="w-full">
+            <h1
+              className={`${monoTrust.className} text-3xl md:text-4xl text-white font-bold mb-4 tracking-tight`}
+            >
+              {produit.nom}
+            </h1>
+            <p
+              className={`${poppins.className} text-white text-lg mb-6 max-w-lg font-medium`}
+            >
+              {produit.description}
+            </p>
+
+            <PriceCards produit={produit} />
+
+            {isSold ? (
+              <p className="text-xl text-red-400 font-semibold">Vendu 🖤</p>
+            ) : (
+              <AddToCartButton produit={{ ...produit, prix: produit.prix! }} />
+            )}
+          </div>
+        </div>
       </main>
     </ProductDetailProvider>
   );
