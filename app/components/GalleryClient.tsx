@@ -162,6 +162,7 @@ export default function GalleryClient({
                     width={700}
                     height={700}
                     className="w-full h-full object-contain select-none"
+                    // preload={true}
                     onLoad={(e) => {
                       if (!firstImageDimensions && i === 0) {
                         const img = e.target as HTMLImageElement;

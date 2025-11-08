@@ -21,12 +21,13 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
       {filtered.length === 0 ? (
         <div className="text-center text-gray-600">Aucun résultat</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 md:gap-y-15 w-full">
           {filtered.map((produit, index) => (
             <Link
               key={produit.id}
               href={`/produit/${produit.id}`}
-              className="group flex flex-col items-center text-center w-full no-underline text-inherit"
+              className="group flex flex-col items-center text-center w-full no-underline text-inherit animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
                 className={clsx([
@@ -51,26 +52,6 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
                   priority={index < 6}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
-
-                {/* Overlay avec informations au hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                  <div className="text-white text-left w-full">
-                    <div
-                      className={`${poppins.className} text-xs sm:text-sm font-medium space-y-1`}
-                    >
-                      {produit.prix_carte && (
-                        <div>Carte postale: {produit.prix_carte}€</div>
-                      )}
-                      <div>Print A4: {produit.prix_print_A4}€</div>
-                      <div>Print A3: {produit.prix_print_A3}€</div>
-                      {produit.prix && (
-                        <div className="font-bold text-white mt-1">
-                          Toile originale: {produit.prix}€
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <div className="mt-4">
@@ -79,6 +60,33 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
                 >
                   {produit.nom}
                 </h2>
+                <p
+                  className={`${poppins.className} text-lg font-medium text-gray-700`}
+                >
+                  À partir de {produit.prix_carte} €
+                </p>
+
+                {/* Pastilles de formats disponibles */}
+                <div
+                  className={`${poppins.className} flex items-center justify-center gap-1 mt-2`}
+                >
+                  {produit.prix_carte && (
+                    <span className="bg-pink-100 text-pink-600 px-2 py-1 rounded-full text-xs font-medium">
+                      Carte
+                    </span>
+                  )}
+                  <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
+                    A4
+                  </span>
+                  <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
+                    A3
+                  </span>
+                  {produit.prix && (
+                    <span className="bg-purple-100 text-purple-600 px-2 py-1 rounded-full text-xs font-medium">
+                      Toile
+                    </span>
+                  )}
+                </div>
               </div>
             </Link>
           ))}

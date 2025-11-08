@@ -1,6 +1,7 @@
 import LogoHover from "./components/LogoHover";
 import SearchButton from "./components/SearchButton";
 import CartButton from "./components/CartButton";
+import ScrollToTop from "./components/ScrollToTop";
 import { produits } from "../data/produits";
 import ProductsGrid from "./components/ProductsGrid";
 
@@ -24,6 +25,7 @@ export default function HomePage() {
       </div>
 
       <ProductsGrid produits={produits} />
+      <ScrollToTop />
     </main>
   );
 }
