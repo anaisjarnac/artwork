@@ -31,7 +31,7 @@ export default function LogoHover() {
       {visible && (
         <div
           style={{ left: pos.x + 20, top: pos.y - 20 }}
-          className="fixed pointer-events-none transition-all duration-150 hidden md:block"
+          className="fixed pointer-events-none transition-all duration-150 hidden md:block z-50"
         >
           <div className="relative rounded-full overflow-hidden shadow-lg w-40 h-40">
             <Image
