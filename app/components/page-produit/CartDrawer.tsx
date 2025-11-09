@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useCart } from "./CartProvider";
+import { CircleX } from "lucide-react";
 
 export default function CartDrawer() {
   const { items, isOpen, close, updateQty, removeItem, total, clear } =
@@ -35,82 +36,93 @@ export default function CartDrawer() {
   };
 
   return (
-    <div className="fixed right-6 top-6 z-[99999] w-80 max-w-full bg-white/95 backdrop-blur-sm shadow-xl rounded-lg p-4 border border-gray-200">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="font-bold text-gray-900">Panier</h3>
-        <div className="flex items-center gap-2">
+    <div
+      className="fixed inset-0 z-[99999] flex justify-end items-start p-6"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          close();
+        }
+      }}
+    >
+      <div className="w-80 max-w-full bg-white/95 backdrop-blur-sm shadow-xl rounded-lg p-4 border border-gray-200">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-bold text-gray-900">Panier</h3>
+          <div className="flex items-center gap-2">
+            {items.length > 0 && (
+              <button
+                onClick={clear}
+                className="text-sm text-gray-500 hover:text-gray-700"
+              >
+                Vider
+              </button>
+            )}
+            <button
+              onClick={close}
+              className="text-sm text-gray-700 hover:text-gray-900"
+            >
+              <CircleX />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 max-h-64 overflow-auto">
+          {items.length === 0 && (
+            <div className="text-gray-500 ">Votre panier est vide.</div>
+          )}
+          {items.map((it, index) => (
+            <div
+              key={`${it.id}-${it.nom}-${index}`}
+              className="flex items-center justify-between"
+            >
+              <div>
+                <div className="font-medium">{it.nom}</div>
+                <div className="text-sm text-gray-500">{it.prix} €</div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() =>
+                    updateQty(it.id, it.nom, Math.max(1, it.qty - 1))
+                  }
+                  className="px-2 bg-gray-200 rounded"
+                >
+                  -
+                </button>
+                <div>{it.qty}</div>
+                <button
+                  onClick={() => updateQty(it.id, it.nom, it.qty + 1)}
+                  className="px-2 bg-gray-200 rounded"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => removeItem(it.id, it.nom)}
+                  className="ml-2 text-red-500"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-4 border-t pt-3 flex items-center justify-between">
+          <div className="font-semibold">Total</div>
+          <div className="font-bold">{total} €</div>
+        </div>
+
+        <div className="mt-3">
           <button
-            onClick={clear}
-            className="text-sm text-gray-500 hover:text-gray-700"
+            onClick={handleCheckout}
+            disabled={loading || items.length === 0}
+            className={`w-full ${
+              loading || items.length === 0
+                ? "bg-gray-400"
+                : "bg-black hover:bg-gray-800"
+            } text-white p-2 rounded`}
           >
-            Vider
-          </button>
-          <button
-            onClick={close}
-            className="text-sm text-gray-700 hover:text-gray-900"
-          >
-            Fermer
+            {loading ? "Redirection..." : "Commander"}
           </button>
         </div>
-      </div>
-
-      <div className="flex flex-col gap-3 max-h-64 overflow-auto">
-        {items.length === 0 && (
-          <div className="text-gray-500">Votre panier est vide.</div>
-        )}
-        {items.map((it, index) => (
-          <div
-            key={`${it.id}-${it.nom}-${index}`}
-            className="flex items-center justify-between"
-          >
-            <div>
-              <div className="font-medium">{it.nom}</div>
-              <div className="text-sm text-gray-500">{it.prix} €</div>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() =>
-                  updateQty(it.id, it.nom, Math.max(1, it.qty - 1))
-                }
-                className="px-2 bg-gray-200 rounded"
-              >
-                -
-              </button>
-              <div>{it.qty}</div>
-              <button
-                onClick={() => updateQty(it.id, it.nom, it.qty + 1)}
-                className="px-2 bg-gray-200 rounded"
-              >
-                +
-              </button>
-              <button
-                onClick={() => removeItem(it.id, it.nom)}
-                className="ml-2 text-red-500"
-              >
-                ×
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-4 border-t pt-3 flex items-center justify-between">
-        <div className="font-semibold">Total</div>
-        <div className="font-bold">{total} €</div>
-      </div>
-
-      <div className="mt-3">
-        <button
-          onClick={handleCheckout}
-          disabled={loading || items.length === 0}
-          className={`w-full ${
-            loading || items.length === 0
-              ? "bg-gray-400"
-              : "bg-black hover:bg-gray-800"
-          } text-white p-2 rounded`}
-        >
-          {loading ? "Redirection..." : "Commander"}
-        </button>
       </div>
     </div>
   );

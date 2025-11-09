@@ -58,7 +58,7 @@ export default function PriceCards({ produit }: PriceCardsProps) {
 
   return (
     <div className="mb-6">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:flex justify-center">
         {formats.map((format) => (
           <div
             key={format.id}
@@ -66,6 +66,7 @@ export default function PriceCards({ produit }: PriceCardsProps) {
               setSelectedFormat(format.id as "A4" | "A3" | "toile" | "carte")
             }
             className={`
+              md:w-32
               relative cursor-pointer transition-all duration-300 rounded-lg p-3 border-2 group
               hover:scale-[1.02] hover:shadow-lg
               ${

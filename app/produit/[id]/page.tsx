@@ -36,9 +36,7 @@ export default async function ProduitPage({
       <main className="min-h-screen bg-[#4b5ae4] pt-2 px-4 pb-4 md:pt-3 md:px-6 md:pb-6 flex flex-col items-center">
         <div className="w-full max-w-[1300px] ">
           <div className="relative mb-2 pointer-events-none">
-            {/* Mobile: cart button on top right */}
-            {/* <div className="flex items-center md:hidden w-full justify-end mb-4 pointer-events-auto"> */}
-            <div className="absolute top-3 right-3 md:top-13">
+            <div className="absolute top-3 right-3 md:top-14">
               <CartButton />
             </div>
             {/* </div> */}
