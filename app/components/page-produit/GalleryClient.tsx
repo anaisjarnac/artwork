@@ -50,6 +50,16 @@ export default function GalleryClient({
   //   if (location?.hostname === "localhost") onImageLoaded();
   // }, [width, height]);
 
+  // Fonction pour détecter si c'est une vidéo
+  const isVideo = (src: string) => {
+    return (
+      src.endsWith(".mp4") ||
+      src.endsWith(".webm") ||
+      src.endsWith(".mov") ||
+      src.endsWith(".avi")
+    );
+  };
+
   // Fonction pour obtenir les images selon le format sélectionné
   const getCurrentImages = () => {
     if (selectedFormat === "A4" || selectedFormat === "A3") {
@@ -153,13 +163,13 @@ export default function GalleryClient({
             onTouchEnd={onTouchEnd}
           >
             {/* Bouton de zoom */}
-            {/* <button
+            <button
               onClick={() => openFullscreen(safeIndex)}
               className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200"
               aria-label="Agrandir l'image"
             >
               <Expand size={20} />
-            </button> */}
+            </button>
             <div
               className={`flex transition-transform duration-300 ease-out ${
                 isDragging ? "transition-none" : ""
@@ -180,24 +190,45 @@ export default function GalleryClient({
                       : undefined,
                   }}
                 >
-                  <Image
-                    src={src}
-                    alt={`image-${i}`}
-                    width={700}
-                    height={700}
-                    className="w-full h-full object-contain select-none"
-                    // preload={true}
-                    onLoad={(e) => {
-                      if (!firstImageDimensions && i === 0) {
-                        const img = e.target as HTMLImageElement;
-                        setFirstImageDimensions({
-                          width: img.naturalWidth,
-                          height: img.naturalHeight,
-                        });
-                      }
-                      // setTimeout(onImageLoaded, 1000);
-                    }}
-                  />
+                  {isVideo(src) ? (
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-contain select-none"
+                      style={{ maxHeight: "100%" }}
+                      onLoadedMetadata={(e) => {
+                        if (!firstImageDimensions && i === 0) {
+                          const video = e.target as HTMLVideoElement;
+                          setFirstImageDimensions({
+                            width: video.videoWidth,
+                            height: video.videoHeight,
+                          });
+                        }
+                      }}
+                    >
+                      <source src={src} type="video/mp4" />
+                      Votre navigateur ne supporte pas les vidéos.
+                    </video>
+                  ) : (
+                    <Image
+                      src={src}
+                      alt={`image-${i}`}
+                      width={700}
+                      height={700}
+                      className="w-full h-full object-contain select-none"
+                      onLoad={(e) => {
+                        if (!firstImageDimensions && i === 0) {
+                          const img = e.target as HTMLImageElement;
+                          setFirstImageDimensions({
+                            width: img.naturalWidth,
+                            height: img.naturalHeight,
+                          });
+                        }
+                      }}
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -225,17 +256,39 @@ export default function GalleryClient({
               type="button"
               key={src + i}
               onClick={() => setIndex(i)}
-              className={`w-12 h-12 md:w-16 md:h-16 rounded-md overflow-hidden border flex-shrink-0 ${
+              className={`w-12 h-12 md:w-16 md:h-16 rounded-md overflow-hidden border flex-shrink-0 relative ${
                 i === safeIndex ? "border-white" : "border-transparent"
               }`}
             >
-              <Image
-                src={src}
-                alt={`thumb-${i}`}
-                width={80}
-                height={80}
-                className="object-cover w-full h-full"
-              />
+              {isVideo(src) ? (
+                <>
+                  <video
+                    muted
+                    className="object-cover w-full h-full"
+                    style={{ pointerEvents: "none" }}
+                  >
+                    <source src={src} type="video/mp4" />
+                  </video>
+                  {/* Icône play pour indiquer que c'est une vidéo */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </>
+              ) : (
+                <Image
+                  src={src}
+                  alt={`thumb-${i}`}
+                  width={80}
+                  height={80}
+                  className="object-cover w-full h-full"
+                />
+              )}
             </button>
           ))}
         </div>
@@ -253,13 +306,27 @@ export default function GalleryClient({
           </button>
 
           <div className="relative max-w-[90vw] max-h-[90vh]">
-            <Image
-              src={currentImages[fullscreenIndex]}
-              alt={`Image ${fullscreenIndex + 1} en grand`}
-              width={1200}
-              height={1200}
-              className="max-w-full max-h-full object-contain"
-            />
+            {isVideo(currentImages[fullscreenIndex]) ? (
+              <video
+                autoPlay
+                loop
+                muted
+                controls
+                playsInline
+                className="max-w-full max-h-full object-contain"
+              >
+                <source src={currentImages[fullscreenIndex]} type="video/mp4" />
+                Votre navigateur ne supporte pas les vidéos.
+              </video>
+            ) : (
+              <Image
+                src={currentImages[fullscreenIndex]}
+                alt={`Image ${fullscreenIndex + 1} en grand`}
+                width={1200}
+                height={1200}
+                className="max-w-full max-h-full object-contain"
+              />
+            )}
 
             {/* Navigation dans le fullscreen */}
             {currentImages.length > 1 && (

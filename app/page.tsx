@@ -25,7 +25,7 @@ export default function HomePage() {
       </div>
 
       <ProductsGrid produits={produits} />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
     </main>
   );
 }

@@ -21,7 +21,7 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
       {filtered.length === 0 ? (
         <div className="text-center text-gray-600">Aucun résultat</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-8 md:gap-y-15 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-12 md:gap-y-15 w-full">
           {filtered.map((produit, index) => (
             <Link
               key={produit.id}
