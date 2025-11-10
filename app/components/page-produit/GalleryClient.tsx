@@ -163,13 +163,13 @@ export default function GalleryClient({
             onTouchEnd={onTouchEnd}
           >
             {/* Bouton de zoom */}
-            <button
+            {/* <button
               onClick={() => openFullscreen(safeIndex)}
               className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200"
               aria-label="Agrandir l'image"
             >
               <Expand size={20} />
-            </button>
+            </button> */}
             <div
               className={`flex transition-transform duration-300 ease-out ${
                 isDragging ? "transition-none" : ""

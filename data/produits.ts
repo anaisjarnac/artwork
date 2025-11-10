@@ -93,7 +93,7 @@ export const produits: Product[] = [
 
     prix: 250,
     images: [
-      "/images/jpeg/dali.jpg",
+      "/images/jpeg/A3dali.jpg",
       "/images/cadre/dalicadre.png",
       "/images/dalicard.png",
       "/images/video/dali.mp4",
@@ -239,13 +239,18 @@ export const produits: Product[] = [
     images: [
       "/images/jpeg/floyd.jpg",
       "/images/cadre/pinkcadre.png",
-      "/images/floydcard.png",
+      "/images/floyscard.png",
+      "/images/video/floyd.mp4",
       "/images/pink.jpeg",
       "/images/pink1.jpeg",
     ],
-    images_print: ["/images/jpeg/floyd.jpg", "/images/cadre/pinkcadre.png"],
+    images_print: [
+      "/images/jpeg/floyd.jpg",
+      "/images/cadre/pinkcadre.png",
+      "/images/video/floyd.mp4",
+    ],
     images_toile: ["/images/pink.jpeg", "/images/pink1.jpeg"],
-    images_carte: ["/images/floydcard.png"],
+    images_carte: ["/images/floyscard.png"],
 
     description: "",
   },
