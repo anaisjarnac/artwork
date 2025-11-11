@@ -60,11 +60,11 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
                 >
                   {produit.nom}
                 </h2>
-                <p
+                {/* <p
                   className={`${poppins.className} text-lg font-medium text-gray-700`}
                 >
                   À partir de {produit.prix_carte} €
-                </p>
+                </p> */}
 
                 {/* Pastilles de formats disponibles */}
                 <div

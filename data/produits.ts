@@ -12,7 +12,7 @@ export const produits: Product[] = [
       "/images/jpeg/kurtcobain.jpg",
       "/images/cadre/kurtcadre.png",
       "/images/kurtcard.png",
-      "images/video/kurt.mp4",
+      "/images/video/kurt.mp4",
       "/images/kurt.jpeg",
       "/images/kurt1.jpeg",
       "/images/kurt2.jpeg",
@@ -20,7 +20,7 @@ export const produits: Product[] = [
     images_print: [
       "/images/jpeg/kurtcobain.jpg",
       "/images/cadre/kurtcadre.png",
-      "images/video/kurt.mp4",
+      "/images/video/kurt.mp4",
     ],
     images_toile: [
       "/images/kurt.jpeg",
