@@ -2,18 +2,30 @@
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { monoTrust, poppins } from "../fonts";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ProductsGrid({ produits }: { produits: any[] }) {
   const [query] = useState("");
+  const router = useRouter();
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return produits;
     return produits.filter((p) => p.nom.toLowerCase().includes(q));
   }, [produits, query]);
+
+  const handleFormatClick = (
+    e: React.MouseEvent,
+    produitId: string,
+    format: string
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push(`/produit/${produitId}?format=${format}`);
+  };
 
   return (
     <div className="w-full max-w-[1300px]">
@@ -71,22 +83,34 @@ export default function ProductsGrid({ produits }: { produits: any[] }) {
                   className={`${poppins.className} flex items-center justify-center gap-1 mt-2`}
                 >
                   {produit.prix_carte && (
-                    <span className="bg-rose-200 text-rose-400 px-2 py-1 rounded-full text-xs font-medium">
+                    <span
+                      onClick={(e) => handleFormatClick(e, produit.id, "carte")}
+                      className="bg-rose-200 text-rose-400 px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:bg-rose-300 hover:text-rose-600 hover:scale-110 hover:shadow-md cursor-pointer"
+                    >
                       Carte
                     </span>
                   )}
                   {produit.prix_print_A4 && (
-                    <span className="bg-indigo-200 text-indigo-400 px-2 py-1 rounded-full text-xs font-medium">
+                    <span
+                      onClick={(e) => handleFormatClick(e, produit.id, "a4")}
+                      className="bg-indigo-200 text-indigo-400 px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:bg-indigo-300 hover:text-indigo-600 hover:scale-110 hover:shadow-md cursor-pointer"
+                    >
                       A4
                     </span>
                   )}
                   {produit.prix_print_A3 && (
-                    <span className="bg-indigo-200 text-indigo-400 px-2 py-1 rounded-full text-xs font-medium">
+                    <span
+                      onClick={(e) => handleFormatClick(e, produit.id, "a3")}
+                      className="bg-indigo-200 text-indigo-400 px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:bg-indigo-300 hover:text-indigo-600 hover:scale-110 hover:shadow-md cursor-pointer"
+                    >
                       A3
                     </span>
                   )}
                   {produit.prix && (
-                    <span className="bg-purple-200 text-purple-400 px-2 py-1 rounded-full text-xs font-medium">
+                    <span
+                      onClick={(e) => handleFormatClick(e, produit.id, "toile")}
+                      className="bg-purple-200 text-purple-400 px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:bg-purple-300 hover:text-purple-600 hover:scale-110 hover:shadow-md cursor-pointer"
+                    >
                       Toile
                     </span>
                   )}

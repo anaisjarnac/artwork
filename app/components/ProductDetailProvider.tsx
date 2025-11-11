@@ -1,5 +1,6 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 
 type FormatType = "A4" | "A3" | "toile" | "carte" | "";
 
@@ -17,7 +18,27 @@ export function ProductDetailProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [selectedFormat, setSelectedFormat] = useState<FormatType>("");
+  const searchParams = useSearchParams();
+
+  const initialFormat = useMemo(() => {
+    const formatParam = searchParams.get("format");
+    if (formatParam) {
+      // Normalisation des formats
+      const formatMap: { [key: string]: FormatType } = {
+        carte: "carte",
+        a4: "A4",
+        a3: "A3",
+        toile: "toile",
+      };
+
+      const normalizedFormat = formatMap[formatParam.toLowerCase()];
+      return normalizedFormat || "";
+    }
+    return "";
+  }, [searchParams]);
+
+  const [selectedFormat, setSelectedFormat] =
+    useState<FormatType>(initialFormat);
 
   return (
     <ProductDetailContext.Provider
