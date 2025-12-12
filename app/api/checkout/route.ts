@@ -62,6 +62,9 @@ export async function POST(req: Request): Promise<NextResponse> {
       payment_method_types: ["card"],
       mode: "payment",
       line_items,
+      invoice_creation: {
+        enabled: true,
+      },
       // Redirect back to the site root so users land on the home page after Stripe
       success_url: `${process.env.NEXT_PUBLIC_URL ?? ""}/?stripe=success`,
       cancel_url: `${process.env.NEXT_PUBLIC_URL ?? ""}/?stripe=cancel`,
