@@ -124,7 +124,7 @@ export const produits: Product[] = [
   },
   {
     id: 5,
-    nom: "OLD SCHOOL",
+    nom: "RICARD",
     prix: 150,
     prix_print_A4: 20,
     prix_print_A3: 30,
@@ -224,7 +224,7 @@ export const produits: Product[] = [
   {
     id: 9,
     nom: "GOGH",
-    prix: 120,
+    prix: 200,
     prix_print_A4: 20,
     prix_print_A3: 30,
     prix_carte: 3,
@@ -242,7 +242,7 @@ export const produits: Product[] = [
   {
     id: 10,
     nom: "PULP",
-    prix: 120,
+    prix: 150,
     prix_print_A4: 20,
     prix_print_A3: 30,
     prix_carte: 3,
@@ -266,6 +266,30 @@ export const produits: Product[] = [
   },
   {
     id: 11,
+    nom: "VIN ROUGE",
+    prix: 150,
+    prix_print_A4: 20,
+    prix_print_A3: 30,
+    prix_carte: 3,
+    images: [
+      "/images/png/vin.png",
+      "/images/vincadre1.png",
+      "/images/vincadre.mp4",
+      "/images/vin.jpeg",
+      "/images/vincarte.png",
+    ],
+    images_print: [
+      "/images/png/vin.png",
+      "/images/vincadre1.png",
+      "/images/vincadre.mp4",
+    ],
+    images_toile: ["/images/vin.jpeg"],
+    images_carte: ["/images/vincarte.png"],
+
+    description: "",
+  },
+  {
+    id: 12,
     nom: "PINK FLOYD",
     prix: 200,
     prix_print_A4: 20,
@@ -290,7 +314,7 @@ export const produits: Product[] = [
     description: "",
   },
   {
-    id: 12,
+    id: 13,
     nom: "SPRITZ",
     prix: 200,
     prix_print_A4: 20,
@@ -320,7 +344,7 @@ export const produits: Product[] = [
     description: "",
   },
   {
-    id: 13,
+    id: 14,
     nom: "FLOWER",
     images: [
       "/images/jpeg/choune.jpg",
@@ -344,7 +368,7 @@ export const produits: Product[] = [
     description: "",
   },
   {
-    id: 14,
+    id: 15,
     nom: "STAR",
     images: [
       "/images/cartes.png",
@@ -357,7 +381,7 @@ export const produits: Product[] = [
     description: "Lot de 4 cartes postales",
   },
   {
-    id: 15,
+    id: 16,
     nom: "MARSEILLE",
     images: [
       "/images/marseille.png",
@@ -370,7 +394,7 @@ export const produits: Product[] = [
     description: "Lot de 4 cartes postales",
   },
   {
-    id: 16,
+    id: 17,
     nom: "PICNIC",
     prix_print_A4: 20,
     prix_print_A3: 30,
