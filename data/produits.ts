@@ -272,11 +272,12 @@ export const produits: Product[] = [
     prix_print_A3: 30,
     prix_carte: 3,
     images: [
-      "/images/theodoraprint.png", "/images/theovideo.mp4",
+      "/images/THEODORAfix.png",
+      "/images/theovideo.mp4",
       "/images/theodoracarte.png",
       "/images/theodora.jpeg",
     ],
-    images_print: ["/images/theodoraprint.png"],
+    images_print: ["/images/THEODORAfix.png", "/images/theovideo.mp4"],
     images_toile: ["/images/theodora.jpeg"],
     images_carte: ["/images/theodoracarte.png"],
 
