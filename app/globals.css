@@ -129,3 +129,16 @@ body {
 .group:hover .shake-target {
   animation: shake 0.45s ease-in-out;
 }
+
+/* Empêcher l'enregistrement / menu contextuel sur images (long-press mobile + right-click desktop) */
+img,
+.no-image-save {
+  -webkit-touch-callout: none; /* iOS Safari: empêche le menu long-press */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* Si besoin d'appliquer uniquement aux images produits, ajoutez la classe .no-image-save sur les <img> */
